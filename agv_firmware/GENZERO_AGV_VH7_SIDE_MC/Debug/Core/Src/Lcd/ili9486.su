@@ -1,0 +1,17 @@
+../Core/Src/Lcd/ili9486.c:214:6:ili9486_DisplayOn	8	static
+../Core/Src/Lcd/ili9486.c:228:6:ili9486_DisplayOff	8	static
+../Core/Src/Lcd/ili9486.c:242:10:ili9486_GetLcdPixelWidth	4	static
+../Core/Src/Lcd/ili9486.c:253:10:ili9486_GetLcdPixelHeight	4	static
+../Core/Src/Lcd/ili9486.c:264:10:ili9486_ReadID	16	static
+../Core/Src/Lcd/ili9486.c:282:6:ili9486_Init	8	static
+../Core/Src/Lcd/ili9486.c:330:6:ili9486_SetCursor	16	static
+../Core/Src/Lcd/ili9486.c:345:6:ili9486_WritePixel	16	static
+../Core/Src/Lcd/ili9486.c:360:10:ili9486_ReadPixel	24	static
+../Core/Src/Lcd/ili9486.c:381:6:ili9486_SetDisplayWindow	24	static
+../Core/Src/Lcd/ili9486.c:399:6:ili9486_DrawHLine	24	static
+../Core/Src/Lcd/ili9486.c:417:6:ili9486_DrawVLine	24	static
+../Core/Src/Lcd/ili9486.c:436:6:ili9486_FillRect	24	static
+../Core/Src/Lcd/ili9486.c:454:6:ili9486_DrawBitmap	24	static
+../Core/Src/Lcd/ili9486.c:483:6:ili9486_DrawRGBImage	24	static
+../Core/Src/Lcd/ili9486.c:502:6:ili9486_ReadRGBImage	24	static
+../Core/Src/Lcd/ili9486.c:520:6:ili9486_Scroll	16	static
