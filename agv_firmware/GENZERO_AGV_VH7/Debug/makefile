@@ -60,8 +60,8 @@ all: main-build
 main-build: GENZERO_AGV_VH7.elf secondary-outputs
 
 # Tool invocations
-GENZERO_AGV_VH7.elf GENZERO_AGV_VH7.map: $(OBJS) $(USER_OBJS) D:\STM32CUBEIDE\PROJECTS\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"D:\STM32CUBEIDE\PROJECTS\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+GENZERO_AGV_VH7.elf GENZERO_AGV_VH7.map: $(OBJS) $(USER_OBJS) D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
