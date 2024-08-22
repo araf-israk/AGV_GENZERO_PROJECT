@@ -1169,25 +1169,25 @@ int main(void)
 
 
 
-//	  Line_Sensor_Calculation(line_sensor_front_values_dma,
-//							  line_sensor_front_values_calibrated,
-//							  line_sensor_front_max_sensor_vales,
-//							  line_sensor_front_min_sensor_vales,
-//							 &line_sensor_front_on_line_middle_number,
-//							 &line_sensor_front_on_line_total_number,
-//							  line_sensor_front_trigger_threshhold,
-//							  line_sensor_front_total_channel,
-//							 &line_sensor_front_read_line_value);
-//
-//	  Line_Sensor_Calculation(line_sensor_back_values_dma,
-//							  line_sensor_back_values_calibrated,
-//							  line_sensor_back_max_sensor_vales,
-//							  line_sensor_back_min_sensor_vales,
-//							 &line_sensor_back_on_line_middle_number,
-//							 &line_sensor_back_on_line_total_number,
-//							  line_sensor_back_trigger_threshhold,
-//							  line_sensor_back_total_channel,
-//							 &line_sensor_back_read_line_value);
+	  Line_Sensor_Calculation(line_sensor_front_values_dma,
+							  line_sensor_front_values_calibrated,
+							  line_sensor_front_max_sensor_vales,
+							  line_sensor_front_min_sensor_vales,
+							 &line_sensor_front_on_line_middle_number,
+							 &line_sensor_front_on_line_total_number,
+							  line_sensor_front_trigger_threshhold,
+							  line_sensor_front_total_channel,
+							 &line_sensor_front_read_line_value);
+
+	  Line_Sensor_Calculation(line_sensor_back_values_dma,
+							  line_sensor_back_values_calibrated,
+							  line_sensor_back_max_sensor_vales,
+							  line_sensor_back_min_sensor_vales,
+							 &line_sensor_back_on_line_middle_number,
+							 &line_sensor_back_on_line_total_number,
+							  line_sensor_back_trigger_threshhold,
+							  line_sensor_back_total_channel,
+							 &line_sensor_back_read_line_value);
 
 //	  PID_control(&line_sensor_front_read_line_value, &agv_orientation);
 //
