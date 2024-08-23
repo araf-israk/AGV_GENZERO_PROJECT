@@ -1,0 +1,91 @@
+/*
+ * line_sensor.h
+ *
+ *  Created on: Aug 23, 2024
+ *      Author: arafi
+ */
+
+#ifndef INC_LINE_SENSOR_H_
+#define INC_LINE_SENSOR_H_
+
+
+// #### LINE SENSOR VARIABLES ####
+
+#define line_sensor_front_total_channel 10
+#define line_sensor_back_total_channel 10
+
+#define max_rs485_speed 255
+
+int _line_read_value;
+
+volatile uint16_t line_sensor_front_values_dma[line_sensor_front_total_channel];
+volatile uint16_t line_sensor_back_values_dma[line_sensor_back_total_channel];
+
+volatile uint16_t line_sensor_front_values_calibrated[line_sensor_front_total_channel];
+volatile uint16_t line_sensor_back_values_calibrated[line_sensor_back_total_channel];
+
+volatile uint8_t line_sensor_front_on_line_left_number, line_sensor_front_on_line_middle_number, line_sensor_front_on_line_right_number;
+volatile uint8_t line_sensor_front_on_line_total_number;
+
+volatile uint8_t line_sensor_back_on_line_left_number, line_sensor_back_on_line_middle_number, line_sensor_back_on_line_right_number;
+volatile uint8_t line_sensor_back_on_line_total_number;
+
+
+uint16_t line_sensor_front_max_sensor_vales[line_sensor_front_total_channel] = {4095, 4095, 4095, 4095, 4095, 4095, 4095, 3388, 4095, 4095};
+uint16_t line_sensor_front_min_sensor_vales[line_sensor_front_total_channel] = {1700, 1800, 1300, 1000, 2300, 1400, 1100, 900, 1300, 2800};
+
+uint16_t line_sensor_back_max_sensor_vales[line_sensor_back_total_channel] = {4095, 4095, 4095, 4095, 4095, 4095, 4095, 4095, 4095, 4095};
+uint16_t line_sensor_back_min_sensor_vales[line_sensor_back_total_channel] = {1400, 1300, 1200, 1000, 1500, 1900, 1800, 1500, 1500, 1500};
+
+
+const int line_sensor_front_channel_number = sizeof(line_sensor_front_values_dma)/sizeof(line_sensor_front_values_dma[0]);
+const int line_sensor_back_channel_number = sizeof(line_sensor_back_values_dma)/sizeof(line_sensor_back_values_dma[0]);
+
+volatile uint16_t line_sensor_front_read_line_value;
+volatile uint16_t line_sensor_back_read_line_value;
+
+//uint8_t line_gap_disable = 0;
+
+uint16_t line_sensor_front_threshold = 500;
+ir_array front_array;
+
+
+
+// #### END LINE SENSOR VARIABLES ####
+
+
+typedef struct ir_array {
+    volatile uint16_t ir_sen_val_dma[10];
+    volatile uint16_t ir_sen_val_cal[10];
+             uint16_t ir_sen_max_val[10];
+             uint16_t ir_sen_min_val[10];
+             uint8_t  ir_sen_channel_num;
+    volatile uint16_t ir_sen_read_line_val;
+             int      ir_sen_read_line_old_val;
+    volatile uint8_t  ir_sen_on_line_total_num;
+    volatile uint8_t  ir_sen_on_line_mid_num;
+    volatile uint8_t  ir_sen_on_line_left_num;
+    volatile uint8_t  ir_sen_on_line_right_num;
+             uint16_t ir_sen_threshold;
+
+}ir_array;
+
+
+void ir_array_init(ir_array *ir_struct,
+                   volatile uint16_t *ir_sen_val_dma,
+                   volatile uint16_t *ir_sen_val_cal,
+                   uint16_t *ir_sen_max_val,
+                   uint16_t *ir_sen_min_val,
+                   uint8_t *ir_sen_channel_num,
+                   uint16_t *ir_sen_read_line_val,
+                   int      *ir_sen_read_line_old_val,
+                   uint8_t  *ir_sen_on_line_total_num,
+                   uint8_t  *ir_sen_on_line_mid_num,
+                   uint8_t  *ir_sen_on_line_left_num,
+                   uint8_t  *ir_sen_on_line_right_num,
+                   uint16_t *ir_sen_threshold);
+
+void Line_Sensor_Calculation(ir_array *ir_struct);
+
+
+#endif /* INC_LINE_SENSOR_H_ */

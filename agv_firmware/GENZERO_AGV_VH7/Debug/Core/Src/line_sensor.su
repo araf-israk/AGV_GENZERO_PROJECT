@@ -1,0 +1,2 @@
+../Core/Src/line_sensor.c:12:6:ir_array_init	32	static
+../Core/Src/line_sensor.c:43:6:Line_Sensor_Calculation	48	static

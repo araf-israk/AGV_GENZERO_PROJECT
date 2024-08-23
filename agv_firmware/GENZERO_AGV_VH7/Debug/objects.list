@@ -1,4 +1,5 @@
 "./Core/Src/LoRa.o"
+"./Core/Src/line_sensor.o"
 "./Core/Src/main.o"
 "./Core/Src/modbus_crc.o"
 "./Core/Src/stm32h7xx_hal_msp.o"
