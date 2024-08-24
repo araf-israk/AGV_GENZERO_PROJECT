@@ -56,6 +56,10 @@ void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
 
+void motor_enable_velocity_mode(uint8_t id);
+void rs485_send_data(uint8_t *data);
+void set_speed(uint8_t id, uint16_t speed, uint8_t dir);
+
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
