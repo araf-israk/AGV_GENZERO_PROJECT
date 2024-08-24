@@ -63,31 +63,18 @@ uint8_t TxBuffer[128];
 uint8_t RxBuffer[128];
 
 uint8_t check_connectivity_tick = 0;
+uint8_t receive_tick = 0;
 
-uint8_t console_line_0[32];
-uint8_t console_line_1[32];
-uint8_t console_line_2[32];
-uint8_t console_line_3[32];
-uint8_t console_line_4[32];
-uint8_t console_line_5[32];
-uint8_t console_line_6[32];
-uint8_t console_line_7[32];
-uint8_t console_line_8[32];
-uint8_t console_line_9[32];
-uint8_t console_line_10[32];
-uint8_t console_line_11[32];
-uint8_t console_line_12[32];
-uint8_t console_line_13[32];
-uint8_t console_line_14[32];
-uint8_t console_line_15[32];
-uint8_t console_line_16[32];
-uint8_t console_line_17[32];
-uint8_t console_line_18[32];
-uint8_t console_line_19[32];
+uint8_t front_line_sensor_buffer[10];
+uint8_t front_line_display_buffer[30];
+
+uint8_t back_line_sensor_buffer[10];
+uint8_t back_line_display_buffer[30];
+
 
 uint8_t last_buffer[32];
 
-
+uint16_t tval = 0;
 
 /* USER CODE END PV */
 
@@ -117,7 +104,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 	if(GPIO_Pin == myLoRa.DIO0_pin){
 		LoRa_receive(&myLoRa, RxBuffer, 128);
 		HAL_GPIO_TogglePin(GREENLED_GPIO_Port, GREENLED_Pin);
-
+		receive_tick = 255;
 	}
 }
 
@@ -213,16 +200,61 @@ int main(void)
 		  }
 		  check_connectivity_tick = 0;
 	  }
+	  if(receive_tick == 255){
+//		  front_line_sensor_buffer[0] = RxBuffer[4];
+//		  front_line_sensor_buffer[1] = RxBuffer[5];
+//		  front_line_sensor_buffer[2] = RxBuffer[6];
+//		  front_line_sensor_buffer[3] = RxBuffer[7];
+//		  front_line_sensor_buffer[4] = RxBuffer[8];
+//		  front_line_sensor_buffer[5] = RxBuffer[9];
+//		  front_line_sensor_buffer[6] = RxBuffer[10];
+//		  front_line_sensor_buffer[7] = RxBuffer[11];
+//		  front_line_sensor_buffer[8] = RxBuffer[12];
+//		  front_line_sensor_buffer[9] = RxBuffer[13];
+//
+//		  back_line_sensor_buffer[0] = RxBuffer[16];
+//		  back_line_sensor_buffer[1] = RxBuffer[17];
+//		  back_line_sensor_buffer[2] = RxBuffer[18];
+//		  back_line_sensor_buffer[3] = RxBuffer[19];
+//		  back_line_sensor_buffer[4] = RxBuffer[20];
+//		  back_line_sensor_buffer[5] = RxBuffer[21];
+//		  back_line_sensor_buffer[6] = RxBuffer[22];
+//		  back_line_sensor_buffer[7] = RxBuffer[23];
+//		  back_line_sensor_buffer[8] = RxBuffer[24];
+//		  back_line_sensor_buffer[9] = RxBuffer[25];
 
+		  receive_tick = 0;
+	  }
 
 	  BSP_LCD_SetFont(&Font16);
 
 	  BSP_LCD_SetTextColor(LCD_COLOR_GREEN);
+	  sprintf(front_line_display_buffer, "F00F|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|", front_line_sensor_buffer[0],
+			  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	front_line_sensor_buffer[1],
+																				front_line_sensor_buffer[2],
+																				front_line_sensor_buffer[3],
+																				front_line_sensor_buffer[4],
+																				front_line_sensor_buffer[5],
+																				front_line_sensor_buffer[6],
+																				front_line_sensor_buffer[7],
+																				front_line_sensor_buffer[8],
+																				front_line_sensor_buffer[9]);
+	  BSP_LCD_DisplayStringAt(40, 10, front_line_display_buffer, LEFT_MODE);
 
 
+	  sprintf(back_line_display_buffer, "F11F|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|", back_line_sensor_buffer[0],
+			  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	   back_line_sensor_buffer[1],
+																			   back_line_sensor_buffer[2],
+																			   back_line_sensor_buffer[3],
+																			   back_line_sensor_buffer[4],
+																			   back_line_sensor_buffer[5],
+																			   back_line_sensor_buffer[6],
+																			   back_line_sensor_buffer[7],
+																			   back_line_sensor_buffer[8],
+																			   back_line_sensor_buffer[9]);
+	  BSP_LCD_DisplayStringAt(40, 40, back_line_display_buffer, LEFT_MODE);
 
 
-	  //BSP_LCD_DisplayStringAt(10, 10, test_buffer, CENTER_MODE);
 
     /* USER CODE END WHILE */
 
@@ -333,9 +365,9 @@ static void MX_TIM4_Init(void)
 
   /* USER CODE END TIM4_Init 1 */
   htim4.Instance = TIM4;
-  htim4.Init.Prescaler = 1600-1;
+  htim4.Init.Prescaler = 320-1;
   htim4.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim4.Init.Period = 0xffff-1;
+  htim4.Init.Period = 32000-1;
   htim4.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim4.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
   if (HAL_TIM_Base_Init(&htim4) != HAL_OK)

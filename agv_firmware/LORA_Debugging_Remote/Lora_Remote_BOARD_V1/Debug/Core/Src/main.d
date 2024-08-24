@@ -27,10 +27,10 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
- D:/STM32Projects/Lora_Remote_BOARD_V1/Core/Src/Lcd/stm32_adafruit_lcd.h \
- D:/STM32Projects/Lora_Remote_BOARD_V1/Core/Src/Lcd/lcd.h \
- D:/STM32Projects/Lora_Remote_BOARD_V1/Core/Src/Lcd/Fonts/fonts.h \
- D:/STM32Projects/Lora_Remote_BOARD_V1/Core/Src/Lcd/lcd.h \
+ D:/AGV_GENZERO_PROJECT/agv_firmware/LORA_Debugging_Remote/Lora_Remote_BOARD_V1/Core/Src/Lcd/stm32_adafruit_lcd.h \
+ D:/AGV_GENZERO_PROJECT/agv_firmware/LORA_Debugging_Remote/Lora_Remote_BOARD_V1/Core/Src/Lcd/lcd.h \
+ D:/AGV_GENZERO_PROJECT/agv_firmware/LORA_Debugging_Remote/Lora_Remote_BOARD_V1/Core/Src/Lcd/Fonts/fonts.h \
+ D:/AGV_GENZERO_PROJECT/agv_firmware/LORA_Debugging_Remote/Lora_Remote_BOARD_V1/Core/Src/Lcd/lcd.h \
  ../Core/Inc/LoRa.h ../Core/Inc/main.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
@@ -61,9 +61,9 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
-D:/STM32Projects/Lora_Remote_BOARD_V1/Core/Src/Lcd/stm32_adafruit_lcd.h:
-D:/STM32Projects/Lora_Remote_BOARD_V1/Core/Src/Lcd/lcd.h:
-D:/STM32Projects/Lora_Remote_BOARD_V1/Core/Src/Lcd/Fonts/fonts.h:
-D:/STM32Projects/Lora_Remote_BOARD_V1/Core/Src/Lcd/lcd.h:
+D:/AGV_GENZERO_PROJECT/agv_firmware/LORA_Debugging_Remote/Lora_Remote_BOARD_V1/Core/Src/Lcd/stm32_adafruit_lcd.h:
+D:/AGV_GENZERO_PROJECT/agv_firmware/LORA_Debugging_Remote/Lora_Remote_BOARD_V1/Core/Src/Lcd/lcd.h:
+D:/AGV_GENZERO_PROJECT/agv_firmware/LORA_Debugging_Remote/Lora_Remote_BOARD_V1/Core/Src/Lcd/Fonts/fonts.h:
+D:/AGV_GENZERO_PROJECT/agv_firmware/LORA_Debugging_Remote/Lora_Remote_BOARD_V1/Core/Src/Lcd/lcd.h:
 ../Core/Inc/LoRa.h:
 ../Core/Inc/main.h:

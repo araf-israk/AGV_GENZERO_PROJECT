@@ -1,0 +1,105 @@
+17:25:46 **** Incremental Build of configuration Debug for project Lora_Remote_BOARD_V1 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"D:/AGV_GENZERO_PROJECT/agv_firmware/LORA_Debugging_Remote/Lora_Remote_BOARD_V1/Core/Src/Lcd" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+In file included from ../Core/Src/main.c:28:
+../Core/Inc/LoRa.h:1:1: warning: multi-line comment [-Wcomment]
+    1 | // -------------------------------------------------- \\
+      | ^
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:232:11: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  232 |           sprintf(front_line_display_buffer, "F00F|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|", front_line_sensor_buffer[0],
+      |           ^~~~~~~
+../Core/Src/main.c:29:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   28 | #include "LoRa.h"
+  +++ |+#include <stdio.h>
+   29 | 
+../Core/Src/main.c:232:11: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  232 |           sprintf(front_line_display_buffer, "F00F|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|", front_line_sensor_buffer[0],
+      |           ^~~~~~~
+../Core/Src/main.c:232:11: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:232:19: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  232 |           sprintf(front_line_display_buffer, "F00F|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|", front_line_sensor_buffer[0],
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~~~
+      |                   |
+      |                   uint8_t * {aka unsigned char *}
+../Core/Src/main.c:232:19: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:245:19: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  245 |           sprintf(back_line_display_buffer, "F11F|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|", back_line_sensor_buffer[0],
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~~
+      |                   |
+      |                   uint8_t * {aka unsigned char *}
+../Core/Src/main.c:245:19: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:232:70: warning: '%d' directive writing between 1 and 3 bytes into a region of size between 1 and 13 [-Wformat-overflow=]
+  232 |           sprintf(front_line_display_buffer, "F00F|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|", front_line_sensor_buffer[0],
+      |                                                                      ^~
+../Core/Src/main.c:232:46: note: directive argument in the range [0, 255]
+  232 |           sprintf(front_line_display_buffer, "F00F|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|", front_line_sensor_buffer[0],
+      |                                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:232:46: note: directive argument in the range [0, 255]
+../Core/Src/main.c:232:46: note: directive argument in the range [0, 255]
+../Core/Src/main.c:232:46: note: directive argument in the range [0, 255]
+../Core/Src/main.c:232:11: note: 'sprintf' output between 26 and 46 bytes into a destination of size 30
+  232 |           sprintf(front_line_display_buffer, "F00F|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|", front_line_sensor_buffer[0],
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  233 |                                                                                                                                                                 front_line_sensor_buffer[1],
+      |                                                                                                                                                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  234 |                                                                                                                                                                 front_line_sensor_buffer[2],
+      |                                                                                                                                                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  235 |                                                                                                                                                                 front_line_sensor_buffer[3],
+      |                                                                                                                                                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  236 |                                                                                                                                                                 front_line_sensor_buffer[4],
+      |                                                                                                                                                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  237 |                                                                                                                                                                 front_line_sensor_buffer[5],
+      |                                                                                                                                                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  238 |                                                                                                                                                                 front_line_sensor_buffer[6],
+      |                                                                                                                                                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  239 |                                                                                                                                                                 front_line_sensor_buffer[7],
+      |                                                                                                                                                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  240 |                                                                                                                                                                 front_line_sensor_buffer[8],
+      |                                                                                                                                                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  241 |                                                                                                                                                                 front_line_sensor_buffer[9]);
+      |                                                                                                                                                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:245:69: warning: '%d' directive writing between 1 and 3 bytes into a region of size between 1 and 13 [-Wformat-overflow=]
+  245 |           sprintf(back_line_display_buffer, "F11F|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|", back_line_sensor_buffer[0],
+      |                                                                     ^~
+../Core/Src/main.c:245:45: note: directive argument in the range [0, 255]
+  245 |           sprintf(back_line_display_buffer, "F11F|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|", back_line_sensor_buffer[0],
+      |                                             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:245:45: note: directive argument in the range [0, 255]
+../Core/Src/main.c:245:45: note: directive argument in the range [0, 255]
+../Core/Src/main.c:245:45: note: directive argument in the range [0, 255]
+../Core/Src/main.c:245:11: note: 'sprintf' output between 26 and 46 bytes into a destination of size 30
+  245 |           sprintf(back_line_display_buffer, "F11F|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|", back_line_sensor_buffer[0],
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  246 |                                                                                                                                                            back_line_sensor_buffer[1],
+      |                                                                                                                                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  247 |                                                                                                                                                            back_line_sensor_buffer[2],
+      |                                                                                                                                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  248 |                                                                                                                                                            back_line_sensor_buffer[3],
+      |                                                                                                                                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  249 |                                                                                                                                                            back_line_sensor_buffer[4],
+      |                                                                                                                                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  250 |                                                                                                                                                            back_line_sensor_buffer[5],
+      |                                                                                                                                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  251 |                                                                                                                                                            back_line_sensor_buffer[6],
+      |                                                                                                                                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  252 |                                                                                                                                                            back_line_sensor_buffer[7],
+      |                                                                                                                                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  253 |                                                                                                                                                            back_line_sensor_buffer[8],
+      |                                                                                                                                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  254 |                                                                                                                                                            back_line_sensor_buffer[9]);
+      |                                                                                                                                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "Lora_Remote_BOARD_V1.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\LORA_Debugging_Remote\Lora_Remote_BOARD_V1\STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Lora_Remote_BOARD_V1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Lora_Remote_BOARD_V1.elf
+ 
+arm-none-eabi-size  Lora_Remote_BOARD_V1.elf 
+arm-none-eabi-objdump -h -S Lora_Remote_BOARD_V1.elf  > "Lora_Remote_BOARD_V1.list"
+   text	   data	    bss	    dec	    hex	filename
+  28508	    180	   3364	  32052	   7d34	Lora_Remote_BOARD_V1.elf
+Finished building: default.size.stdout
+ 
+Finished building: Lora_Remote_BOARD_V1.list
+ 
+
+17:25:47 Build Finished. 0 errors, 7 warnings. (took 999ms)
+

@@ -63,8 +63,8 @@ all: main-build
 main-build: Lora_Remote_BOARD_V1.elf secondary-outputs
 
 # Tool invocations
-Lora_Remote_BOARD_V1.elf Lora_Remote_BOARD_V1.map: $(OBJS) $(USER_OBJS) D:\STM32Projects\Lora_Remote_BOARD_V1\STM32F411CEUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Lora_Remote_BOARD_V1.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\STM32Projects\Lora_Remote_BOARD_V1\STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Lora_Remote_BOARD_V1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Lora_Remote_BOARD_V1.elf Lora_Remote_BOARD_V1.map: $(OBJS) $(USER_OBJS) D:\AGV_GENZERO_PROJECT\agv_firmware\LORA_Debugging_Remote\Lora_Remote_BOARD_V1\STM32F411CEUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Lora_Remote_BOARD_V1.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\LORA_Debugging_Remote\Lora_Remote_BOARD_V1\STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Lora_Remote_BOARD_V1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
