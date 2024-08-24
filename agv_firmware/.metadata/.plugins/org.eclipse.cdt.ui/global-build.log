@@ -1,208 +1,1625 @@
-16:31:17 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
-make -j16 all 
+23:32:55 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'PID_Forward_Rotation':
-../Core/Src/main.c:403:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
-  403 |                   set_speed(0x01, enableB, 0);
+../Core/Src/main.c:315:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
+  315 |                   set_speed(0x01, enableB, 0);
       |                   ^~~~~~~~~
 ../Core/Src/main.c: In function 'PID_Motor_All_Break':
-../Core/Src/main.c:545:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
-  545 |           motor_enable_velocity_mode(0x01);
+../Core/Src/main.c:457:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
+  457 |           motor_enable_velocity_mode(0x01);
       |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
 ../Core/Src/main.c: At top level:
-../Core/Src/main.c:965:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
-  965 | void motor_enable_velocity_mode(uint8_t id){
+../Core/Src/main.c:878:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  878 | void motor_enable_velocity_mode(uint8_t id){
       |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:545:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
-  545 |           motor_enable_velocity_mode(0x01);
+../Core/Src/main.c:457:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  457 |           motor_enable_velocity_mode(0x01);
       |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:1003:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
- 1003 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
+../Core/Src/main.c:916:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  916 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
       |      ^~~~~~~~~
-../Core/Src/main.c:403:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
-  403 |                   set_speed(0x01, enableB, 0);
+../Core/Src/main.c:315:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  315 |                   set_speed(0x01, enableB, 0);
       |                   ^~~~~~~~~
 arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-C:/ST/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
 Finished building target: GENZERO_AGV_VH7.elf
  
 arm-none-eabi-size  GENZERO_AGV_VH7.elf 
 arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
    text	   data	    bss	    dec	    hex	filename
-  64760	    108	   3020	  67888	  10930	GENZERO_AGV_VH7.elf
+  64560	    108	   3012	  67680	  10860	GENZERO_AGV_VH7.elf
 Finished building: default.size.stdout
  
 Finished building: GENZERO_AGV_VH7.list
  
-16:36:41 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
-make -j16 all 
+23:33:03 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+   text	   data	    bss	    dec	    hex	filename
+  64560	    108	   3012	  67680	  10860	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+00:15:04 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+   text	   data	    bss	    dec	    hex	filename
+  64560	    108	   3012	  67680	  10860	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+00:33:52 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'PID_Forward_Rotation':
-../Core/Src/main.c:403:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
-  403 |                   set_speed(0x01, enableB, 0);
+../Core/Src/main.c:316:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
+  316 |                   set_speed(0x01, enableB, 0);
       |                   ^~~~~~~~~
 ../Core/Src/main.c: In function 'PID_Motor_All_Break':
-../Core/Src/main.c:545:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
-  545 |           motor_enable_velocity_mode(0x01);
+../Core/Src/main.c:458:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
+  458 |           motor_enable_velocity_mode(0x01);
       |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
 ../Core/Src/main.c: At top level:
-../Core/Src/main.c:965:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
-  965 | void motor_enable_velocity_mode(uint8_t id){
+../Core/Src/main.c:874:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  874 | void motor_enable_velocity_mode(uint8_t id){
       |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:545:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
-  545 |           motor_enable_velocity_mode(0x01);
+../Core/Src/main.c:458:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  458 |           motor_enable_velocity_mode(0x01);
       |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:1003:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
- 1003 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
+../Core/Src/main.c:912:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  912 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
       |      ^~~~~~~~~
-../Core/Src/main.c:403:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
-  403 |                   set_speed(0x01, enableB, 0);
+../Core/Src/main.c:316:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  316 |                   set_speed(0x01, enableB, 0);
       |                   ^~~~~~~~~
 arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-C:/ST/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
 Finished building target: GENZERO_AGV_VH7.elf
  
 arm-none-eabi-size  GENZERO_AGV_VH7.elf 
 arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
    text	   data	    bss	    dec	    hex	filename
-  64380	     28	   3004	  67412	  10754	GENZERO_AGV_VH7.elf
+  64580	    108	   3020	  67708	  1087c	GENZERO_AGV_VH7.elf
 Finished building: default.size.stdout
  
 Finished building: GENZERO_AGV_VH7.list
  
-16:51:46 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
-make -j16 all 
-arm-none-eabi-gcc "../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.d" -MT"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.o"
-arm-none-eabi-gcc "../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.d" -MT"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.o"
-arm-none-eabi-gcc "../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc_ex.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc_ex.d" -MT"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc_ex.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc_ex.o"
-arm-none-eabi-gcc "../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.d" -MT"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.o"
-arm-none-eabi-gcc "../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.d" -MT"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.o"
-arm-none-eabi-gcc "../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma_ex.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma_ex.d" -MT"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma_ex.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma_ex.o"
-arm-none-eabi-gcc "../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.d" -MT"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.o"
-arm-none-eabi-gcc "../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash.d" -MT"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash.o"
-arm-none-eabi-gcc "../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash_ex.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash_ex.d" -MT"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash_ex.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash_ex.o"
-arm-none-eabi-gcc "../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.d" -MT"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.o"
-arm-none-eabi-gcc "../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.d" -MT"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.o"
-arm-none-eabi-gcc "../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c.d" -MT"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c.o"
-arm-none-eabi-gcc "../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.d" -MT"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.o"
-arm-none-eabi-gcc "../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_mdma.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_mdma.d" -MT"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_mdma.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_mdma.o"
-arm-none-eabi-gcc "../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr.d" -MT"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr.o"
-arm-none-eabi-gcc "../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.d" -MT"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.o"
-arm-none-eabi-gcc "../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.d" -MT"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.o"
-arm-none-eabi-gcc "../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.d" -MT"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.o"
-arm-none-eabi-gcc "../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi.d" -MT"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi.o"
-arm-none-eabi-gcc "../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi_ex.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi_ex.d" -MT"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi_ex.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi_ex.o"
-arm-none-eabi-gcc "../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.d" -MT"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.o"
-arm-none-eabi-gcc "../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.d" -MT"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.o"
-arm-none-eabi-gcc "../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.d" -MT"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.o"
-arm-none-eabi-gcc "../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.d" -MT"Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.o"
-arm-none-eabi-gcc "../Core/Src/LoRa.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/LoRa.d" -MT"Core/Src/LoRa.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/LoRa.o"
-arm-none-eabi-gcc "../Core/Src/line_sensor.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/line_sensor.d" -MT"Core/Src/line_sensor.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/line_sensor.o"
+00:42:17 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc "../Core/Src/stm32h7xx_hal_msp.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32h7xx_hal_msp.d" -MT"Core/Src/stm32h7xx_hal_msp.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32h7xx_hal_msp.o"
-arm-none-eabi-gcc "../Core/Src/stm32h7xx_it.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32h7xx_it.d" -MT"Core/Src/stm32h7xx_it.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32h7xx_it.o"
-arm-none-eabi-gcc "../Core/Src/system_stm32h7xx.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/system_stm32h7xx.d" -MT"Core/Src/system_stm32h7xx.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/system_stm32h7xx.o"
 ../Core/Src/main.c: In function 'PID_Forward_Rotation':
-../Core/Src/main.c:403:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
-  403 |                   set_speed(0x01, enableB, 0);
+../Core/Src/main.c:316:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
+  316 |                   set_speed(0x01, enableB, 0);
       |                   ^~~~~~~~~
 ../Core/Src/main.c: In function 'PID_Motor_All_Break':
-../Core/Src/main.c:545:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
-  545 |           motor_enable_velocity_mode(0x01);
+../Core/Src/main.c:458:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
+  458 |           motor_enable_velocity_mode(0x01);
       |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
 ../Core/Src/main.c: At top level:
-../Core/Src/main.c:965:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
-  965 | void motor_enable_velocity_mode(uint8_t id){
+../Core/Src/main.c:875:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  875 | void motor_enable_velocity_mode(uint8_t id){
       |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:545:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
-  545 |           motor_enable_velocity_mode(0x01);
+../Core/Src/main.c:458:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  458 |           motor_enable_velocity_mode(0x01);
       |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:1003:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
- 1003 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
+../Core/Src/main.c:913:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  913 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
       |      ^~~~~~~~~
-../Core/Src/main.c:403:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
-  403 |                   set_speed(0x01, enableB, 0);
+../Core/Src/main.c:316:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  316 |                   set_speed(0x01, enableB, 0);
       |                   ^~~~~~~~~
 arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-C:/ST/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
 Finished building target: GENZERO_AGV_VH7.elf
  
 arm-none-eabi-size  GENZERO_AGV_VH7.elf 
 arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
    text	   data	    bss	    dec	    hex	filename
-  63572	     28	   2804	  66404	  10364	GENZERO_AGV_VH7.elf
+  64584	    108	   3020	  67712	  10880	GENZERO_AGV_VH7.elf
 Finished building: default.size.stdout
  
 Finished building: GENZERO_AGV_VH7.list
  
-16:54:00 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
-make -j16 all 
+00:56:00 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'PID_Forward_Rotation':
-../Core/Src/main.c:403:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
-  403 |                   set_speed(0x01, enableB, 0);
+../Core/Src/main.c:316:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
+  316 |                   set_speed(0x01, enableB, 0);
       |                   ^~~~~~~~~
 ../Core/Src/main.c: In function 'PID_Motor_All_Break':
-../Core/Src/main.c:545:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
-  545 |           motor_enable_velocity_mode(0x01);
+../Core/Src/main.c:458:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
+  458 |           motor_enable_velocity_mode(0x01);
       |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
 ../Core/Src/main.c: At top level:
-../Core/Src/main.c:965:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
-  965 | void motor_enable_velocity_mode(uint8_t id){
+../Core/Src/main.c:875:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  875 | void motor_enable_velocity_mode(uint8_t id){
       |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:545:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
-  545 |           motor_enable_velocity_mode(0x01);
+../Core/Src/main.c:458:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  458 |           motor_enable_velocity_mode(0x01);
       |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:1003:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
- 1003 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
+../Core/Src/main.c:913:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  913 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
       |      ^~~~~~~~~
-../Core/Src/main.c:403:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
-  403 |                   set_speed(0x01, enableB, 0);
+../Core/Src/main.c:316:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  316 |                   set_speed(0x01, enableB, 0);
       |                   ^~~~~~~~~
 arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-C:/ST/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
 Finished building target: GENZERO_AGV_VH7.elf
  
 arm-none-eabi-size  GENZERO_AGV_VH7.elf 
 arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
    text	   data	    bss	    dec	    hex	filename
-  63572	     28	   2964	  66564	  10404	GENZERO_AGV_VH7.elf
+  64584	    108	   3020	  67712	  10880	GENZERO_AGV_VH7.elf
 Finished building: default.size.stdout
  
 Finished building: GENZERO_AGV_VH7.list
  
-16:55:43 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
-make -j16 all 
+01:00:28 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'PID_Forward_Rotation':
-../Core/Src/main.c:403:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
-  403 |                   set_speed(0x01, enableB, 0);
+../Core/Src/main.c:316:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
+  316 |                   set_speed(0x01, enableB, 0);
       |                   ^~~~~~~~~
 ../Core/Src/main.c: In function 'PID_Motor_All_Break':
-../Core/Src/main.c:545:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
-  545 |           motor_enable_velocity_mode(0x01);
+../Core/Src/main.c:458:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
+  458 |           motor_enable_velocity_mode(0x01);
       |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
 ../Core/Src/main.c: At top level:
-../Core/Src/main.c:965:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
-  965 | void motor_enable_velocity_mode(uint8_t id){
+../Core/Src/main.c:875:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  875 | void motor_enable_velocity_mode(uint8_t id){
       |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:545:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
-  545 |           motor_enable_velocity_mode(0x01);
+../Core/Src/main.c:458:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  458 |           motor_enable_velocity_mode(0x01);
       |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:1003:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
- 1003 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
+../Core/Src/main.c:913:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  913 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
       |      ^~~~~~~~~
-../Core/Src/main.c:403:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
-  403 |                   set_speed(0x01, enableB, 0);
+../Core/Src/main.c:316:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  316 |                   set_speed(0x01, enableB, 0);
       |                   ^~~~~~~~~
 arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-C:/ST/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
 Finished building target: GENZERO_AGV_VH7.elf
  
 arm-none-eabi-size  GENZERO_AGV_VH7.elf 
 arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
    text	   data	    bss	    dec	    hex	filename
-  64400	    108	   3020	  67528	  107c8	GENZERO_AGV_VH7.elf
+  64412	    108	   3020	  67540	  107d4	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+01:20:14 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'PID_Forward_Rotation':
+../Core/Src/main.c:320:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
+  320 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+../Core/Src/main.c: In function 'PID_Motor_All_Break':
+../Core/Src/main.c:462:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
+  462 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:879:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  879 | void motor_enable_velocity_mode(uint8_t id){
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:462:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  462 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:917:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  917 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
+      |      ^~~~~~~~~
+../Core/Src/main.c:320:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  320 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:1190:11: error: 'crc' undeclared (first use in this function); did you mean 'crc16'?
+ 1190 |           crc = crc16(rs485_TxData, 6);
+      |           ^~~
+      |           crc16
+../Core/Src/main.c:1190:11: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/Src/subdir.mk:43: Core/Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+01:20:58 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'PID_Forward_Rotation':
+../Core/Src/main.c:320:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
+  320 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+../Core/Src/main.c: In function 'PID_Motor_All_Break':
+../Core/Src/main.c:462:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
+  462 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:879:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  879 | void motor_enable_velocity_mode(uint8_t id){
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:462:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  462 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:917:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  917 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
+      |      ^~~~~~~~~
+../Core/Src/main.c:320:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  320 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  64300	    108	   3020	  67428	  10764	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+01:23:39 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'PID_Forward_Rotation':
+../Core/Src/main.c:320:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
+  320 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+../Core/Src/main.c: In function 'PID_Motor_All_Break':
+../Core/Src/main.c:462:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
+  462 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:879:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  879 | void motor_enable_velocity_mode(uint8_t id){
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:462:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  462 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:917:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  917 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
+      |      ^~~~~~~~~
+../Core/Src/main.c:320:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  320 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  64300	    108	   3020	  67428	  10764	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+01:24:30 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'PID_Forward_Rotation':
+../Core/Src/main.c:320:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
+  320 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+../Core/Src/main.c: In function 'PID_Motor_All_Break':
+../Core/Src/main.c:462:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
+  462 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:879:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  879 | void motor_enable_velocity_mode(uint8_t id){
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:462:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  462 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:917:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  917 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
+      |      ^~~~~~~~~
+../Core/Src/main.c:320:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  320 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  64300	    108	   3020	  67428	  10764	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+01:39:16 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'PID_Forward_Rotation':
+../Core/Src/main.c:320:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
+  320 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+../Core/Src/main.c: In function 'PID_Motor_All_Break':
+../Core/Src/main.c:462:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
+  462 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:879:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  879 | void motor_enable_velocity_mode(uint8_t id){
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:462:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  462 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:917:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  917 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
+      |      ^~~~~~~~~
+../Core/Src/main.c:320:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  320 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:1208:20: error: redefinition of 'crc'
+ 1208 |           uint16_t crc = crc16(rs485_TxData, 6);
+      |                    ^~~
+../Core/Src/main.c:1190:20: note: previous definition of 'crc' with type 'uint16_t' {aka 'short unsigned int'}
+ 1190 |           uint16_t crc = crc16(rs485_TxData, 6);
+      |                    ^~~
+make: *** [Core/Src/subdir.mk:43: Core/Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+01:39:27 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'PID_Forward_Rotation':
+../Core/Src/main.c:320:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
+  320 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+../Core/Src/main.c: In function 'PID_Motor_All_Break':
+../Core/Src/main.c:462:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
+  462 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:879:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  879 | void motor_enable_velocity_mode(uint8_t id){
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:462:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  462 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:917:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  917 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
+      |      ^~~~~~~~~
+../Core/Src/main.c:320:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  320 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  64384	    108	   3020	  67512	  107b8	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+01:54:18 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'PID_Forward_Rotation':
+../Core/Src/main.c:321:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
+  321 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+../Core/Src/main.c: In function 'PID_Motor_All_Break':
+../Core/Src/main.c:463:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
+  463 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:884:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  884 | void motor_enable_velocity_mode(uint8_t id){
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:463:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  463 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:922:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  922 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
+      |      ^~~~~~~~~
+../Core/Src/main.c:321:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  321 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  64316	    108	   3020	  67444	  10774	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+01:55:12 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'PID_Forward_Rotation':
+../Core/Src/main.c:321:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
+  321 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+../Core/Src/main.c: In function 'PID_Motor_All_Break':
+../Core/Src/main.c:463:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
+  463 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:884:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  884 | void motor_enable_velocity_mode(uint8_t id){
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:463:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  463 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:922:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  922 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
+      |      ^~~~~~~~~
+../Core/Src/main.c:321:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  321 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  64308	    108	   3020	  67436	  1076c	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+02:39:47 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'PID_Forward_Rotation':
+../Core/Src/main.c:321:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
+  321 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+../Core/Src/main.c: In function 'PID_Motor_All_Break':
+../Core/Src/main.c:463:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
+  463 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:885:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  885 | void motor_enable_velocity_mode(uint8_t id){
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:463:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  463 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'motor_enable_velocity_mode':
+../Core/Src/main.c:900:11: warning: implicit declaration of function 'sendData' [-Wimplicit-function-declaration]
+  900 |           sendData(rs485_TxData);
+      |           ^~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:923:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  923 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
+      |      ^~~~~~~~~
+../Core/Src/main.c:321:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  321 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Core/Src/main.o: in function `main':
+D:/AGV_GENZERO_PROJECT/agv_firmware/GENZERO_AGV_VH7/Debug/../Core/Src/main.c:1200: undefined reference to `sendData'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:64: GENZERO_AGV_VH7.elf] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+02:41:23 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'PID_Forward_Rotation':
+../Core/Src/main.c:321:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
+  321 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+../Core/Src/main.c: In function 'PID_Motor_All_Break':
+../Core/Src/main.c:463:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
+  463 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:885:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  885 | void motor_enable_velocity_mode(uint8_t id){
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:463:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  463 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'motor_enable_velocity_mode':
+../Core/Src/main.c:900:11: warning: implicit declaration of function 'sendData' [-Wimplicit-function-declaration]
+  900 |           sendData(rs485_TxData);
+      |           ^~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:923:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  923 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
+      |      ^~~~~~~~~
+../Core/Src/main.c:321:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  321 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  64308	    108	   3020	  67436	  1076c	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+05:33:40 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'PID_Forward_Rotation':
+../Core/Src/main.c:321:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
+  321 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+../Core/Src/main.c: In function 'PID_Motor_All_Break':
+../Core/Src/main.c:463:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
+  463 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:895:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  895 | void motor_enable_velocity_mode(uint8_t id){
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:463:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  463 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'motor_enable_velocity_mode':
+../Core/Src/main.c:910:11: warning: implicit declaration of function 'sendData' [-Wimplicit-function-declaration]
+  910 |           sendData(rs485_TxData);
+      |           ^~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:933:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  933 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
+      |      ^~~~~~~~~
+../Core/Src/main.c:321:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  321 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:1132:14: error: 'rs485_callback_toggle' undeclared (first use in this function)
+ 1132 |           if(rs485_callback_toggle == 255){
+      |              ^~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:1132:14: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/Src/subdir.mk:43: Core/Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+05:33:51 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'PID_Forward_Rotation':
+../Core/Src/main.c:321:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
+  321 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+../Core/Src/main.c: In function 'PID_Motor_All_Break':
+../Core/Src/main.c:463:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
+  463 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:895:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  895 | void motor_enable_velocity_mode(uint8_t id){
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:463:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  463 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'motor_enable_velocity_mode':
+../Core/Src/main.c:910:11: warning: implicit declaration of function 'sendData' [-Wimplicit-function-declaration]
+  910 |           sendData(rs485_TxData);
+      |           ^~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:933:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  933 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
+      |      ^~~~~~~~~
+../Core/Src/main.c:321:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  321 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  64248	    108	   2988	  67344	  10710	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+05:40:36 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'PID_Forward_Rotation':
+../Core/Src/main.c:321:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
+  321 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+../Core/Src/main.c: In function 'PID_Motor_All_Break':
+../Core/Src/main.c:463:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
+  463 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:895:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  895 | void motor_enable_velocity_mode(uint8_t id){
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:463:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  463 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'motor_enable_velocity_mode':
+../Core/Src/main.c:910:11: warning: implicit declaration of function 'sendData' [-Wimplicit-function-declaration]
+  910 |           sendData(rs485_TxData);
+      |           ^~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:933:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  933 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
+      |      ^~~~~~~~~
+../Core/Src/main.c:321:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  321 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:1206:20: error: redefinition of 'crc'
+ 1206 |           uint16_t crc = crc16(rs485_TxData, 6);
+      |                    ^~~
+../Core/Src/main.c:1189:20: note: previous definition of 'crc' with type 'uint16_t' {aka 'short unsigned int'}
+ 1189 |           uint16_t crc = crc16(rs485_TxData, 6);
+      |                    ^~~
+make: *** [Core/Src/subdir.mk:43: Core/Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+05:40:43 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'PID_Forward_Rotation':
+../Core/Src/main.c:321:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
+  321 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+../Core/Src/main.c: In function 'PID_Motor_All_Break':
+../Core/Src/main.c:463:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
+  463 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:895:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  895 | void motor_enable_velocity_mode(uint8_t id){
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:463:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  463 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'motor_enable_velocity_mode':
+../Core/Src/main.c:910:11: warning: implicit declaration of function 'sendData' [-Wimplicit-function-declaration]
+  910 |           sendData(rs485_TxData);
+      |           ^~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:933:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  933 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
+      |      ^~~~~~~~~
+../Core/Src/main.c:321:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  321 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  64324	    108	   2988	  67420	  1075c	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+05:50:26 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'PID_Forward_Rotation':
+../Core/Src/main.c:323:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
+  323 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+../Core/Src/main.c: In function 'PID_Motor_All_Break':
+../Core/Src/main.c:465:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
+  465 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:905:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  905 | void motor_enable_velocity_mode(uint8_t id){
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:465:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  465 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'motor_enable_velocity_mode':
+../Core/Src/main.c:920:11: warning: implicit declaration of function 'sendData' [-Wimplicit-function-declaration]
+  920 |           sendData(rs485_TxData);
+      |           ^~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:943:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  943 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
+      |      ^~~~~~~~~
+../Core/Src/main.c:323:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  323 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  64364	    108	   2988	  67460	  10784	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+05:52:13 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'PID_Forward_Rotation':
+../Core/Src/main.c:323:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
+  323 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+../Core/Src/main.c: In function 'PID_Motor_All_Break':
+../Core/Src/main.c:465:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
+  465 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:905:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  905 | void motor_enable_velocity_mode(uint8_t id){
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:465:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  465 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'motor_enable_velocity_mode':
+../Core/Src/main.c:920:11: warning: implicit declaration of function 'sendData' [-Wimplicit-function-declaration]
+  920 |           sendData(rs485_TxData);
+      |           ^~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:943:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  943 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
+      |      ^~~~~~~~~
+../Core/Src/main.c:323:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  323 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  64284	    108	   2988	  67380	  10734	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+05:54:27 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'PID_Forward_Rotation':
+../Core/Src/main.c:323:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
+  323 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+../Core/Src/main.c: In function 'PID_Motor_All_Break':
+../Core/Src/main.c:465:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
+  465 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:905:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  905 | void motor_enable_velocity_mode(uint8_t id){
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:465:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  465 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'motor_enable_velocity_mode':
+../Core/Src/main.c:920:11: warning: implicit declaration of function 'sendData' [-Wimplicit-function-declaration]
+  920 |           sendData(rs485_TxData);
+      |           ^~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:943:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  943 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
+      |      ^~~~~~~~~
+../Core/Src/main.c:323:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  323 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  64216	    108	   2988	  67312	  106f0	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+05:56:34 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'PID_Forward_Rotation':
+../Core/Src/main.c:323:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
+  323 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+../Core/Src/main.c: In function 'PID_Motor_All_Break':
+../Core/Src/main.c:465:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
+  465 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:905:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  905 | void motor_enable_velocity_mode(uint8_t id){
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:465:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  465 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'motor_enable_velocity_mode':
+../Core/Src/main.c:920:11: warning: implicit declaration of function 'sendData' [-Wimplicit-function-declaration]
+  920 |           sendData(rs485_TxData);
+      |           ^~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:943:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  943 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
+      |      ^~~~~~~~~
+../Core/Src/main.c:323:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  323 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  64192	    108	   2988	  67288	  106d8	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+05:57:12 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'PID_Forward_Rotation':
+../Core/Src/main.c:323:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
+  323 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+../Core/Src/main.c: In function 'PID_Motor_All_Break':
+../Core/Src/main.c:465:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
+  465 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:905:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  905 | void motor_enable_velocity_mode(uint8_t id){
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:465:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  465 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'motor_enable_velocity_mode':
+../Core/Src/main.c:920:11: warning: implicit declaration of function 'sendData' [-Wimplicit-function-declaration]
+  920 |           sendData(rs485_TxData);
+      |           ^~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:943:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  943 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
+      |      ^~~~~~~~~
+../Core/Src/main.c:323:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  323 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  64268	    108	   2988	  67364	  10724	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+05:59:07 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'PID_Forward_Rotation':
+../Core/Src/main.c:323:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
+  323 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+../Core/Src/main.c: In function 'PID_Motor_All_Break':
+../Core/Src/main.c:465:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
+  465 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:905:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  905 | void motor_enable_velocity_mode(uint8_t id){
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:465:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  465 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'motor_enable_velocity_mode':
+../Core/Src/main.c:920:11: warning: implicit declaration of function 'sendData' [-Wimplicit-function-declaration]
+  920 |           sendData(rs485_TxData);
+      |           ^~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:943:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  943 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
+      |      ^~~~~~~~~
+../Core/Src/main.c:323:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  323 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  64264	    108	   2988	  67360	  10720	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+05:59:43 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+   text	   data	    bss	    dec	    hex	filename
+  64264	    108	   2988	  67360	  10720	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+06:08:43 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'PID_Forward_Rotation':
+../Core/Src/main.c:325:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
+  325 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+../Core/Src/main.c: In function 'PID_Motor_All_Break':
+../Core/Src/main.c:467:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
+  467 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:903:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  903 | void motor_enable_velocity_mode(uint8_t id){
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:467:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  467 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'motor_enable_velocity_mode':
+../Core/Src/main.c:918:11: warning: implicit declaration of function 'sendData' [-Wimplicit-function-declaration]
+  918 |           sendData(rs485_TxData);
+      |           ^~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:941:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  941 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
+      |      ^~~~~~~~~
+../Core/Src/main.c:325:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  325 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  64304	    108	   2996	  67408	  10750	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+06:12:11 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'PID_Forward_Rotation':
+../Core/Src/main.c:325:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
+  325 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+../Core/Src/main.c: In function 'PID_Motor_All_Break':
+../Core/Src/main.c:467:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
+  467 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:902:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  902 | void motor_enable_velocity_mode(uint8_t id){
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:467:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  467 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'motor_enable_velocity_mode':
+../Core/Src/main.c:917:11: warning: implicit declaration of function 'sendData' [-Wimplicit-function-declaration]
+  917 |           sendData(rs485_TxData);
+      |           ^~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:940:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  940 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
+      |      ^~~~~~~~~
+../Core/Src/main.c:325:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  325 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  64384	    108	   3004	  67496	  107a8	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+06:17:42 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'PID_Forward_Rotation':
+../Core/Src/main.c:325:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
+  325 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+../Core/Src/main.c: In function 'PID_Motor_All_Break':
+../Core/Src/main.c:467:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
+  467 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:906:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  906 | void motor_enable_velocity_mode(uint8_t id){
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:467:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  467 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'motor_enable_velocity_mode':
+../Core/Src/main.c:921:11: warning: implicit declaration of function 'sendData' [-Wimplicit-function-declaration]
+  921 |           sendData(rs485_TxData);
+      |           ^~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:944:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  944 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
+      |      ^~~~~~~~~
+../Core/Src/main.c:325:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  325 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  64404	    108	   3004	  67516	  107bc	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+06:19:37 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'PID_Forward_Rotation':
+../Core/Src/main.c:325:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
+  325 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+../Core/Src/main.c: In function 'PID_Motor_All_Break':
+../Core/Src/main.c:467:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
+  467 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:902:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  902 | void motor_enable_velocity_mode(uint8_t id){
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:467:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  467 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'motor_enable_velocity_mode':
+../Core/Src/main.c:917:11: warning: implicit declaration of function 'sendData' [-Wimplicit-function-declaration]
+  917 |           sendData(rs485_TxData);
+      |           ^~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:940:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  940 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
+      |      ^~~~~~~~~
+../Core/Src/main.c:325:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  325 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  64384	    108	   3004	  67496	  107a8	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+06:20:31 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'PID_Forward_Rotation':
+../Core/Src/main.c:325:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
+  325 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+../Core/Src/main.c: In function 'PID_Motor_All_Break':
+../Core/Src/main.c:467:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
+  467 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:903:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  903 | void motor_enable_velocity_mode(uint8_t id){
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:467:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  467 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'motor_enable_velocity_mode':
+../Core/Src/main.c:918:11: warning: implicit declaration of function 'sendData' [-Wimplicit-function-declaration]
+  918 |           sendData(rs485_TxData);
+      |           ^~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:941:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  941 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
+      |      ^~~~~~~~~
+../Core/Src/main.c:325:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  325 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  64384	    108	   3004	  67496	  107a8	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+06:22:34 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+   text	   data	    bss	    dec	    hex	filename
+  64384	    108	   3004	  67496	  107a8	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+06:31:49 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'PID_Forward_Rotation':
+../Core/Src/main.c:326:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
+  326 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+../Core/Src/main.c: In function 'PID_Motor_All_Break':
+../Core/Src/main.c:468:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
+  468 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:908:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  908 | void motor_enable_velocity_mode(uint8_t id){
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:468:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  468 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'motor_enable_velocity_mode':
+../Core/Src/main.c:923:11: warning: implicit declaration of function 'sendData' [-Wimplicit-function-declaration]
+  923 |           sendData(rs485_TxData);
+      |           ^~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:946:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  946 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
+      |      ^~~~~~~~~
+../Core/Src/main.c:326:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  326 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  64408	    108	   3004	  67520	  107c0	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+06:33:07 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+   text	   data	    bss	    dec	    hex	filename
+  64408	    108	   3004	  67520	  107c0	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+06:36:39 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'PID_Forward_Rotation':
+../Core/Src/main.c:326:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
+  326 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+../Core/Src/main.c: In function 'PID_Motor_All_Break':
+../Core/Src/main.c:468:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
+  468 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:910:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  910 | void motor_enable_velocity_mode(uint8_t id){
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:468:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  468 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'motor_enable_velocity_mode':
+../Core/Src/main.c:925:11: warning: implicit declaration of function 'sendData' [-Wimplicit-function-declaration]
+  925 |           sendData(rs485_TxData);
+      |           ^~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:948:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  948 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
+      |      ^~~~~~~~~
+../Core/Src/main.c:326:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  326 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  64420	    108	   3004	  67532	  107cc	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+06:38:50 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'PID_Forward_Rotation':
+../Core/Src/main.c:326:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
+  326 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+../Core/Src/main.c: In function 'PID_Motor_All_Break':
+../Core/Src/main.c:468:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
+  468 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:913:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  913 | void motor_enable_velocity_mode(uint8_t id){
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:468:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  468 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'motor_enable_velocity_mode':
+../Core/Src/main.c:928:11: warning: implicit declaration of function 'sendData' [-Wimplicit-function-declaration]
+  928 |           sendData(rs485_TxData);
+      |           ^~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:951:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  951 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
+      |      ^~~~~~~~~
+../Core/Src/main.c:326:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  326 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  64376	    108	   2996	  67480	  10798	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+06:41:51 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'PID_Forward_Rotation':
+../Core/Src/main.c:326:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
+  326 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+../Core/Src/main.c: In function 'PID_Motor_All_Break':
+../Core/Src/main.c:468:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
+  468 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:914:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  914 | void motor_enable_velocity_mode(uint8_t id){
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:468:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  468 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'motor_enable_velocity_mode':
+../Core/Src/main.c:929:11: warning: implicit declaration of function 'sendData' [-Wimplicit-function-declaration]
+  929 |           sendData(rs485_TxData);
+      |           ^~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:952:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  952 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
+      |      ^~~~~~~~~
+../Core/Src/main.c:326:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  326 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  64376	    108	   2996	  67480	  10798	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+06:43:15 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'PID_Forward_Rotation':
+../Core/Src/main.c:326:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
+  326 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+../Core/Src/main.c: In function 'PID_Motor_All_Break':
+../Core/Src/main.c:468:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
+  468 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:914:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  914 | void motor_enable_velocity_mode(uint8_t id){
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:468:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  468 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'motor_enable_velocity_mode':
+../Core/Src/main.c:929:11: warning: implicit declaration of function 'sendData' [-Wimplicit-function-declaration]
+  929 |           sendData(rs485_TxData);
+      |           ^~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:952:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  952 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
+      |      ^~~~~~~~~
+../Core/Src/main.c:326:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  326 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  64428	    108	   3004	  67540	  107d4	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+06:46:35 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'PID_Forward_Rotation':
+../Core/Src/main.c:326:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
+  326 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+../Core/Src/main.c: In function 'PID_Motor_All_Break':
+../Core/Src/main.c:468:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
+  468 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:914:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  914 | void motor_enable_velocity_mode(uint8_t id){
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:468:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  468 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'motor_enable_velocity_mode':
+../Core/Src/main.c:929:11: warning: implicit declaration of function 'sendData' [-Wimplicit-function-declaration]
+  929 |           sendData(rs485_TxData);
+      |           ^~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:952:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  952 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
+      |      ^~~~~~~~~
+../Core/Src/main.c:326:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  326 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  64436	    108	   3004	  67548	  107dc	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+06:46:48 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+   text	   data	    bss	    dec	    hex	filename
+  64436	    108	   3004	  67548	  107dc	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+07:39:08 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'PID_Forward_Rotation':
+../Core/Src/main.c:327:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
+  327 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+../Core/Src/main.c: In function 'PID_Motor_All_Break':
+../Core/Src/main.c:469:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
+  469 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'rs485_check_connectivity':
+../Core/Src/main.c:926:44: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+  926 | void motor_enable_velocity_mode(uint8_t id){
+      |                                            ^
+../Core/Src/main.c:956:56: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+  956 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
+      |                                                        ^
+../Core/Src/main.c:982:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+  982 | {
+      | ^
+../Core/Src/main.c:993:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+  993 | {
+      | ^
+../Core/Src/main.c:1375:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ 1375 | {
+      | ^
+../Core/Src/main.c:1435:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ 1435 | {
+      | ^
+../Core/Src/main.c:1463:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ 1463 | {
+      | ^
+../Core/Src/main.c:1613:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ 1613 | {
+      | ^
+../Core/Src/main.c:1757:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ 1757 | {
+      | ^
+../Core/Src/main.c:1805:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ 1805 | {
+      | ^
+../Core/Src/main.c:1858:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ 1858 | {
+      | ^
+../Core/Src/main.c:1904:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ 1904 | {
+      | ^
+../Core/Src/main.c:1925:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ 1925 | {
+      | ^
+../Core/Src/main.c:2046:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ 2046 | {
+      | ^
+../Core/Src/main.c:2073: error: expected '{' at end of input
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:227:13: warning: 'MX_GPIO_Init' declared 'static' but never defined [-Wunused-function]
+  227 | static void MX_GPIO_Init(void);
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:228:13: warning: 'MX_DMA_Init' declared 'static' but never defined [-Wunused-function]
+  228 | static void MX_DMA_Init(void);
+      |             ^~~~~~~~~~~
+../Core/Src/main.c:229:13: warning: 'MX_ADC1_Init' declared 'static' but never defined [-Wunused-function]
+  229 | static void MX_ADC1_Init(void);
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:230:13: warning: 'MX_ADC3_Init' declared 'static' but never defined [-Wunused-function]
+  230 | static void MX_ADC3_Init(void);
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:231:13: warning: 'MX_USART1_UART_Init' declared 'static' but never defined [-Wunused-function]
+  231 | static void MX_USART1_UART_Init(void);
+      |             ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:232:13: warning: 'MX_TIM2_Init' declared 'static' but never defined [-Wunused-function]
+  232 | static void MX_TIM2_Init(void);
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:233:13: warning: 'MX_SPI1_Init' declared 'static' but never defined [-Wunused-function]
+  233 | static void MX_SPI1_Init(void);
+      |             ^~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:43: Core/Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+07:40:11 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'PID_Forward_Rotation':
+../Core/Src/main.c:327:19: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
+  327 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+../Core/Src/main.c: In function 'PID_Motor_All_Break':
+../Core/Src/main.c:469:11: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
+  469 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:925:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  925 | void motor_enable_velocity_mode(uint8_t id){
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:469:11: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  469 |           motor_enable_velocity_mode(0x01);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'motor_enable_velocity_mode':
+../Core/Src/main.c:937:11: warning: implicit declaration of function 'sendData' [-Wimplicit-function-declaration]
+  937 |           sendData(rs485_TxData);
+      |           ^~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:955:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  955 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
+      |      ^~~~~~~~~
+../Core/Src/main.c:327:19: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  327 |                   set_speed(0x01, enableB, 0);
+      |                   ^~~~~~~~~
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  64432	    108	   2996	  67536	  107d0	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+07:52:14 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'PID_Forward_Rotation':
+../Core/Src/main.c:327:17: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
+  327 |                 set_speed(0x01, enableB, 0);
+      |                 ^~~~~~~~~
+../Core/Src/main.c: In function 'PID_Motor_All_Break':
+../Core/Src/main.c:457:9: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
+  457 |         motor_enable_velocity_mode(0x01);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:910:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  910 | void motor_enable_velocity_mode(uint8_t id){
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:457:9: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  457 |         motor_enable_velocity_mode(0x01);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'motor_enable_velocity_mode':
+../Core/Src/main.c:922:11: warning: implicit declaration of function 'sendData' [-Wimplicit-function-declaration]
+  922 |           sendData(rs485_TxData);
+      |           ^~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:940:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  940 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
+      |      ^~~~~~~~~
+../Core/Src/main.c:327:17: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  327 |                 set_speed(0x01, enableB, 0);
+      |                 ^~~~~~~~~
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Core/Src/main.o: in function `motor_enable_velocity_mode':
+D:/AGV_GENZERO_PROJECT/agv_firmware/GENZERO_AGV_VH7/Debug/../Core/Src/main.c:922: undefined reference to `sendData'
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: D:/AGV_GENZERO_PROJECT/agv_firmware/GENZERO_AGV_VH7/Debug/../Core/Src/main.c:936: undefined reference to `sendData'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:64: GENZERO_AGV_VH7.elf] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+07:53:02 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'PID_Forward_Rotation':
+../Core/Src/main.c:327:17: warning: implicit declaration of function 'set_speed' [-Wimplicit-function-declaration]
+  327 |                 set_speed(0x01, enableB, 0);
+      |                 ^~~~~~~~~
+../Core/Src/main.c: In function 'PID_Motor_All_Break':
+../Core/Src/main.c:457:9: warning: implicit declaration of function 'motor_enable_velocity_mode' [-Wimplicit-function-declaration]
+  457 |         motor_enable_velocity_mode(0x01);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:910:6: warning: conflicting types for 'motor_enable_velocity_mode'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  910 | void motor_enable_velocity_mode(uint8_t id){
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:457:9: note: previous implicit declaration of 'motor_enable_velocity_mode' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  457 |         motor_enable_velocity_mode(0x01);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:940:6: warning: conflicting types for 'set_speed'; have 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  940 | void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
+      |      ^~~~~~~~~
+../Core/Src/main.c:327:17: note: previous implicit declaration of 'set_speed' with type 'void(uint8_t,  uint16_t,  uint8_t)' {aka 'void(unsigned char,  short unsigned int,  unsigned char)'}
+  327 |                 set_speed(0x01, enableB, 0);
+      |                 ^~~~~~~~~
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  64600	    108	   2996	  67704	  10878	GENZERO_AGV_VH7.elf
 Finished building: default.size.stdout
  
 Finished building: GENZERO_AGV_VH7.list

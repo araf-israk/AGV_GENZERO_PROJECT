@@ -59,10 +59,22 @@ UART_HandleTypeDef huart1;
 
 // #### RS485 ####
 
-uint8_t RxData[32];
-uint8_t TxData[8];
-uint16_t Data[10];
+uint8_t rs485_RxData[16];
+uint8_t rs485_TxData[8];
+uint32_t rs485_received_data;
 
+uint8_t rs485_isbusy = 0;
+
+uint16_t rs485_reg_address = 0;
+uint16_t rs485_reg_number = 0;
+uint8_t rs485_rx_num_bytes = 0;
+
+uint16_t rs485_exc_time = 0;
+uint32_t rs485_time1 = 0;
+uint32_t rs485_time2 = 0;
+uint16_t rs485_fail_check = 0;
+uint16_t rs485_last_fail_check = 0;
+uint8_t rs485_connectivity = 0;
 // #### END RS485 ####
 
 // -o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-
@@ -226,94 +238,6 @@ static void MX_SPI1_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
-//void Line_Sensor_Calculation(volatile uint16_t *sensor_values,
-//						 	  volatile uint16_t *sensor_calibrated_values,
-//							      	   uint16_t *sensor_max_values,
-//									   uint16_t *sensor_min_values,
-//
-//							  volatile uint8_t  *sensor_middle_on_line_number,
-//
-//							  volatile uint8_t  *sensor_total_on_line_number,
-//									   uint16_t  sensor_threshhold,
-//									   uint8_t   sensor_numbers,
-//							  volatile uint16_t *line_position){
-//	uint8_t i, on_line = 0;
-//	uint32_t avg = 0;
-//	uint32_t sum = 0;
-//	uint16_t value;
-//	uint8_t on_sensor_total_number = 0;
-//
-//	uint8_t middle_on_line = 0;
-//
-//
-//	for(i = 0; i < sensor_numbers; i++){
-//		uint16_t calmin, calmax;
-//		uint16_t denominator;
-//		calmax = sensor_max_values[i];
-//		calmin = sensor_min_values[i];
-//
-//		denominator = calmax - calmin;
-//
-//		int x = 0;
-//		if(denominator != 0){
-//			x = (((signed long)sensor_values[i]) - calmin) * 1000/denominator;
-//		}
-//		if(x <0){
-//			x = 0;
-//		}
-//		if(x>1000){
-//			x = 1000;
-//		}
-//		value = (1000-x);
-//		sensor_calibrated_values[i] = value;
-//
-//		// start read line number section
-//		if(value > 600){
-//			on_line = 1;
-//		}
-//		if(value > 200){
-//			avg += (long)(value)*(i*1000);
-//			sum += value;
-//		}
-//		// end read line number section
-//
-//		// start on line sensor calculation
-//		if(value > sensor_threshhold){
-//			on_sensor_total_number++;
-//			if(i >= 2 && i <= 7){
-//				middle_on_line++;
-//			}
-//		}
-//		// end on line sensor calculation
-//	}
-//
-//	// start read line number section
-//	if(!on_line){
-//		if(_line_read_value < (sensor_numbers - 1) * 1000/2){
-//			_line_read_value = 0;
-//		}
-//		else{
-//			_line_read_value = (sensor_numbers - 1)*1000;
-//		}
-//	}
-//	else{
-//		_line_read_value = avg/sum;
-//	}
-//	*line_position = _line_read_value;
-//	// end read line number section
-//
-//	// start on line sensor calculation
-//
-//	*sensor_middle_on_line_number = middle_on_line;
-//
-//	*sensor_total_on_line_number = on_sensor_total_number;
-//	// end on line sensor calculation
-//	// 0 - 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9
-//
-//	// 2 - 7 --> mid
-//
-//}
-
 void PID_control(volatile uint16_t *line_position,
 				          uint16_t *motor_orientation){
 
@@ -400,10 +324,8 @@ void PID_Forward_Rotation(uint16_t enableA, uint16_t enableB, uint16_t *orientat
 		//Left
 		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, enableB);
 
-		  set_speed(0x01, enableB, 0);
-		  HAL_Delay(10);
-		  set_speed(0x02, enableA, 1);
-		  HAL_Delay(10);
+		set_speed(0x01, enableB, 0);
+		set_speed(0x02, enableA, 1);
 	}
 
 	if(*orientation == 0xF00F){
@@ -422,10 +344,8 @@ void PID_Forward_Rotation(uint16_t enableA, uint16_t enableB, uint16_t *orientat
 		//Left
 		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, enableB);
 
-		  set_speed(0x01, enableB, 1);
-		  HAL_Delay(10);
-		  set_speed(0x02, enableA, 0);
-		  HAL_Delay(10);
+		set_speed(0x01, enableB, 1);
+		set_speed(0x02, enableA, 0);
 
 	}
 
@@ -449,10 +369,8 @@ void PID_Motor_Turn_Left(uint16_t _speed, uint16_t *orientation){
 		//Left
 		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, _speed);
 
-		  set_speed(0x01, _speed, 0);
-		  HAL_Delay(10);
-		  set_speed(0x02, _speed, 0);
-		  HAL_Delay(10);
+		set_speed(0x01, _speed, 0);
+		set_speed(0x02, _speed, 0);
 	}
 
 	if(*orientation == 0xF00F){
@@ -471,10 +389,8 @@ void PID_Motor_Turn_Left(uint16_t _speed, uint16_t *orientation){
 		//Left
 		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, _speed);
 
-		  set_speed(0x01, _speed, 0);
-		  HAL_Delay(10);
-		  set_speed(0x02, _speed, 0);
-		  HAL_Delay(10);
+		set_speed(0x01, _speed, 0);
+		set_speed(0x02, _speed, 0);
 
 	}
 }
@@ -495,10 +411,8 @@ void PID_Motor_Turn_Right(uint16_t _speed, uint16_t *orientation){
 		//Left
 		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, _speed);
 
-		  set_speed(0x01, _speed, 1);
-		  HAL_Delay(10);
-		  set_speed(0x02, _speed, 1);
-		  HAL_Delay(10);
+		set_speed(0x01, _speed, 1);
+		set_speed(0x02, _speed, 1);
 	}
 
 	if(*orientation == 0xF00F){
@@ -517,10 +431,8 @@ void PID_Motor_Turn_Right(uint16_t _speed, uint16_t *orientation){
 		//Left
 		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, _speed);
 
-		  set_speed(0x01, _speed, 1);
-		  HAL_Delay(10);
-		  set_speed(0x02, _speed, 1);
-		  HAL_Delay(10);
+		set_speed(0x01, _speed, 1);
+		set_speed(0x02, _speed, 1);
 
 	}
 
@@ -542,14 +454,10 @@ void PID_Motor_All_Break(){
 	//Left
 	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, 0);
 
-	  motor_enable_velocity_mode(0x01);
-	  HAL_Delay(10);
-	  motor_enable_velocity_mode(0x02);
-	  HAL_Delay(10);
-	  set_speed(0x01, 0, 1);
-	  HAL_Delay(10);
-	  set_speed(0x02, 0, 0);
-	  HAL_Delay(10);
+	motor_enable_velocity_mode(0x01);
+	motor_enable_velocity_mode(0x02);
+	set_speed(0x01, 0, 1);
+	set_speed(0x02, 0, 0);
 
 }
 
@@ -948,85 +856,108 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 
 void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
 {
-	Data[0] = RxData[3]<<8 | RxData[4];
-	Data[1] = RxData[5]<<8 | RxData[6];
-	Data[2] = RxData[7]<<8 | RxData[8];
-	Data[3] = RxData[9]<<8 | RxData[10];
-	Data[4] = RxData[11]<<8 | RxData[12];
+
+//	if(rs485_RxData[1] == 0x6){ //0x6 == writing function code
+//
+//	}
+	if(rs485_RxData[1] == 0x3){ //0x3 == reading function code
+		rs485_rx_num_bytes = rs485_RxData[2];
+		rs485_reg_address = (rs485_TxData[2] << 8) | (rs485_TxData[3]);
+		rs485_reg_number  = (rs485_TxData[4] << 8) | (rs485_TxData[5]);
+
+	}
+	//rs485_time2 = HAL_GetTick();
+	//rs485_exc_time = rs485_time2 - rs485_time1;
+	rs485_isbusy = 0;
+	rs485_fail_check = 0;
+	HAL_UARTEx_ReceiveToIdle_IT(&huart1, rs485_RxData, 32);
 }
 
-void sendData (uint8_t *data)
+void rs485_send_data(uint8_t *data)
 {
-	HAL_GPIO_WritePin(TX_EN_GPIO_Port, TX_EN_Pin, GPIO_PIN_SET);
-	HAL_UART_Transmit(&huart1, data, 8, 1000);
-	HAL_GPIO_WritePin(TX_EN_GPIO_Port,TX_EN_Pin , GPIO_PIN_RESET);
+
+	if(rs485_isbusy == 0){
+		HAL_GPIO_WritePin(TX_EN_GPIO_Port, TX_EN_Pin, GPIO_PIN_SET);
+		HAL_UART_Transmit(&huart1, data, 8, 1000);
+		HAL_GPIO_WritePin(TX_EN_GPIO_Port,TX_EN_Pin , GPIO_PIN_RESET);
+		rs485_isbusy = 255;
+		//rs485_time1 = HAL_GetTick();
+	}
+	else{
+		if(rs485_fail_check < 0xffff){
+			rs485_fail_check++;
+		}
+		else{
+			//Lost Connection to RS485
+			rs485_isbusy = 0;
+			HAL_Delay(20);
+		}
+
+		if(rs485_last_fail_check == 0xffff){
+			if(rs485_fail_check < 0xffff){
+				//Regained Connection to RS485
+
+				motor_enable_velocity_mode(0x01);
+				motor_enable_velocity_mode(0x02);
+				//rs485_connectivity++;
+			}
+		}
+		rs485_last_fail_check = rs485_fail_check;
+	}
 }
+
 
 void motor_enable_velocity_mode(uint8_t id){
-	  TxData[0] = id;  // slave address
-	  TxData[1] = 0x06;  // Function code for Read Holding Registers
+	  rs485_TxData[0] = id;
+	  rs485_TxData[1] = 0x06;  // Function code
+	  //address 2032 -> Operating Mode
+	  rs485_TxData[2] = 0x20;  // High 8 bit register address
+	  rs485_TxData[3] = 0x32;  // Low  8 bit register address
+	  //data 0x03 -> Set Velocity Mode
+	  rs485_TxData[4] = 0x00;  // High 8 bit register data
+	  rs485_TxData[5] = 0x03;  // Low  8 bit register data
+	  uint16_t crc = crc16(rs485_TxData, 6);
+	  rs485_TxData[6] = crc&0xFF;
+	  rs485_TxData[7] = (crc>>8)&0xFF;
+	  rs485_send_data(rs485_TxData);
 
-	  TxData[2] = 0x20;
-	  TxData[3] = 0x32;
-	  //The Register address will be 00000000 00000100 = 4 + 40001 = 40005
 
-	  TxData[4] = 0x00;
-	  TxData[5] = 0x03;
-	  // no of registers to read will be 00000000 00000101 = 5 Registers = 10 Bytes
+	  rs485_TxData[0] = id;
+	  rs485_TxData[1] = 0x06;  // Function code
+	  //address 2031 -> Control Word
+	  rs485_TxData[2] = 0x20;  // High 8 bit register address
+	  rs485_TxData[3] = 0x31;  // Low  8 bit register address
+	  //data 0x08 -> Enable Motor
+	  rs485_TxData[4] = 0x00;  // High 8 bit register data
+	  rs485_TxData[5] = 0x08;  // Low  8 bit register data
+	  crc = crc16(rs485_TxData, 6);
+	  rs485_TxData[6] = crc&0xFF;
+	  rs485_TxData[7] = (crc>>8)&0xFF;
+	  rs485_send_data(rs485_TxData);
 
-	  uint16_t crc = crc16(TxData, 6);
-	  TxData[6] = crc&0xFF;   // CRC LOW
-	  TxData[7] = (crc>>8)&0xFF;  // CRC HIGH
-	  sendData(TxData);
-
-	  HAL_Delay(10);
-
-	  TxData[0] = id;  // slave address
-	  TxData[1] = 0x06;  // Function code for Read Holding Registers
-
-	  TxData[2] = 0x20;
-	  TxData[3] = 0x31;
-	  //The Register address will be 00000000 00000100 = 4 + 40001 = 40005
-
-	  TxData[4] = 0x00;
-	  TxData[5] = 0x08;
-	  // no of registers to read will be 00000000 00000101 = 5 Registers = 10 Bytes
-
-	  crc = crc16(TxData, 6);
-	  TxData[6] = crc&0xFF;   // CRC LOW
-	  TxData[7] = (crc>>8)&0xFF;  // CRC HIGH
-
-	  sendData(TxData);
-	  HAL_Delay(10);
 }
 
 void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
 
-	TxData[0] = id;  // slave address
-	TxData[1] = 0x06;  // Function code for Read Holding Registers
-
-	TxData[2] = 0x20;
-	TxData[3] = 0x3A;
-	//The Register address will be 00000000 00000100 = 4 + 40001 = 40005
+	rs485_TxData[0] = id;
+	rs485_TxData[1] = 0x06;  // Function code
+	//address 203A -> Target Speed
+	rs485_TxData[2] = 0x20;  // High 8 bit register address
+	rs485_TxData[3] = 0x3A;  // Low  8 bit register address
+	// Set Speed and Direction
 	if(dir == 0){
-		TxData[4] = (speed>>8)&0xFF;
-		TxData[5] = speed&0xFF;
+		rs485_TxData[4] = (speed>>8)&0xFF; // High 8 bit register data
+		rs485_TxData[5] = speed&0xFF; // Low  8 bit register address
 	}
 	if(dir == 1){
 		speed = (~speed) + 1;
-		TxData[4] = (speed>>8)&0xFF;
-		TxData[5] = speed&0xFF;
+		rs485_TxData[4] = (speed>>8)&0xFF; // High 8 bit register data
+		rs485_TxData[5] = speed&0xFF; // Low  8 bit register address
 	}
-
-	// no of registers to read will be 00000000 00000101 = 5 Registers = 10 Bytes
-
-	uint16_t crc = crc16(TxData, 6);
-	TxData[6] = crc&0xFF;   // CRC LOW
-	TxData[7] = (crc>>8)&0xFF;  // CRC HIGH
-
-	sendData(TxData);
-
-	HAL_Delay(10);
+	uint16_t crc = crc16(rs485_TxData, 6);
+	rs485_TxData[6] = crc&0xFF;
+	rs485_TxData[7] = (crc>>8)&0xFF;
+	rs485_send_data(rs485_TxData);
 }
 
 
@@ -1080,17 +1011,17 @@ int main(void)
 
 
 
-  HAL_UARTEx_ReceiveToIdle_IT(&huart1, RxData, 32);
+  HAL_UARTEx_ReceiveToIdle_IT(&huart1, rs485_RxData, 16);
 
 
 
   HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
   HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2);
 
-  motor_enable_velocity_mode(0x01);
-  HAL_Delay(10);
-  motor_enable_velocity_mode(0x02);
-  HAL_Delay(10);
+//  motor_enable_velocity_mode(0x01);
+//  HAL_Delay(10);
+//  motor_enable_velocity_mode(0x02);
+//  HAL_Delay(10);
 
 
 //  Line_Sensor_Calculation(line_sensor_front_values_dma,
@@ -1199,8 +1130,9 @@ int main(void)
 //		  lora_receive_toggle = 0;
 //	  }
 
-	  Line_Sensor_Calculation(&front_array);
-	  Line_Sensor_Calculation(&back_array);
+
+//	  Line_Sensor_Calculation(&front_array);
+//	  Line_Sensor_Calculation(&back_array);
 
 //	  Line_Sensor_Calculation(line_sensor_front_values_dma,
 //							  line_sensor_front_values_calibrated,
@@ -1244,13 +1176,45 @@ int main(void)
 	  //PID_Forward_Rotation(10, 50, &agv_orientation);
 	  //agv_orientation = 0xF11F;
 
-//	  motor_enable_velocity_mode(0x01);
-//	  HAL_Delay(10);
+	  rs485_TxData[0] = 0x1;  // slave address
+	  rs485_TxData[1] = 0x03;  // Function code for Read Holding Registers
+
+	  rs485_TxData[2] = 0x20;
+	  rs485_TxData[3] = 0x24;
+	  //The Register address will be 00000000 00000100 = 4 + 40001 = 40005
+
+	  rs485_TxData[4] = 0x00;
+	  rs485_TxData[5] = 0x01;
+	  // no of registers to read will be 00000000 00000101 = 5 Registers = 10 Bytes
+
+	  uint16_t crc = crc16(rs485_TxData, 6);
+	  rs485_TxData[6] = crc&0xFF;
+	  rs485_TxData[7] = (crc>>8)&0xFF;
+
+	  rs485_send_data(rs485_TxData);
+	  //HAL_Delay(10);
+	  rs485_TxData[0] = 0x1;  // slave address
+	  rs485_TxData[1] = 0x03;  // Function code for Read Holding Registers
+
+	  rs485_TxData[2] = 0x20;
+	  rs485_TxData[3] = 0x2C;
+	  //The Register address will be 00000000 00000100 = 4 + 40001 = 40005
+
+	  rs485_TxData[4] = 0x00;
+	  rs485_TxData[5] = 0x01;
+	  // no of registers to read will be 00000000 00000101 = 5 Registers = 10 Bytes
+
+	  crc = crc16(rs485_TxData, 6);
+	  rs485_TxData[6] = crc&0xFF;
+	  rs485_TxData[7] = (crc>>8)&0xFF;
+
+	  rs485_send_data(rs485_TxData);
+
 //	  motor_enable_velocity_mode(0x02);
 //	  HAL_Delay(10);
 //
-//	  set_speed(0x01, 10, 1);
-//	  HAL_Delay(10);
+//	  set_speed(0x01, 100, 1);
+//	  HAL_Delay(100);
 //	  set_speed(0x02, 50, 0);
 //	  HAL_Delay(10);
 
