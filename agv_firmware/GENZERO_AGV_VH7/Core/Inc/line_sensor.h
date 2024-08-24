@@ -25,6 +25,7 @@ typedef struct ir_array {
     volatile uint8_t  ir_sen_on_line_left_num;
     volatile uint8_t  ir_sen_on_line_right_num;
              uint16_t ir_sen_threshold;
+    volatile uint8_t  ir_sen_val_cal_trig[10];
 
 }ir_array;
 

@@ -1,4 +1,4 @@
-07:53:02 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+17:18:45 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
 make -j8 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'PID_Forward_Rotation':
@@ -29,11 +29,11 @@ Finished building target: GENZERO_AGV_VH7.elf
 arm-none-eabi-size  GENZERO_AGV_VH7.elf 
 arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
    text	   data	    bss	    dec	    hex	filename
-  64600	    108	   2996	  67704	  10878	GENZERO_AGV_VH7.elf
+  63948	    108	   3012	  67068	  105fc	GENZERO_AGV_VH7.elf
 Finished building: default.size.stdout
  
 Finished building: GENZERO_AGV_VH7.list
  
 
-07:53:04 Build Finished. 0 errors, 5 warnings. (took 1s.463ms)
+17:18:47 Build Finished. 0 errors, 5 warnings. (took 1s.480ms)
 

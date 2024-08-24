@@ -960,12 +960,40 @@ void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
 	rs485_send_data(rs485_TxData);
 }
 
+void load_debug_info(){
+	LoraTxBuffer[0] = 0xF3;
+	LoraTxBuffer[1] = 0x01;
 
+	LoraTxBuffer[2] = 0xF0;
+	LoraTxBuffer[3] = 0x0F;
 
-int map(int x, int in_min, int in_max, int out_min, int out_max)
-{
-  return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+	LoraTxBuffer[4] = front_array.ir_sen_val_cal_trig[0];
+	LoraTxBuffer[5] = front_array.ir_sen_val_cal_trig[1];
+	LoraTxBuffer[6] = front_array.ir_sen_val_cal_trig[2];
+	LoraTxBuffer[7] = front_array.ir_sen_val_cal_trig[3];
+	LoraTxBuffer[8] = front_array.ir_sen_val_cal_trig[4];
+	LoraTxBuffer[9] = front_array.ir_sen_val_cal_trig[5];
+	LoraTxBuffer[10] = front_array.ir_sen_val_cal_trig[6];
+	LoraTxBuffer[11] = front_array.ir_sen_val_cal_trig[7];
+	LoraTxBuffer[12] = front_array.ir_sen_val_cal_trig[8];
+	LoraTxBuffer[13] = front_array.ir_sen_val_cal_trig[9];
+
+	LoraTxBuffer[14] = 0xF1;
+	LoraTxBuffer[15] = 0x1F;
+
+	LoraTxBuffer[16] = back_array.ir_sen_val_cal_trig[0];
+	LoraTxBuffer[17] = back_array.ir_sen_val_cal_trig[1];
+	LoraTxBuffer[18] = back_array.ir_sen_val_cal_trig[2];
+	LoraTxBuffer[19] = back_array.ir_sen_val_cal_trig[3];
+	LoraTxBuffer[20] = back_array.ir_sen_val_cal_trig[4];
+	LoraTxBuffer[21] = back_array.ir_sen_val_cal_trig[5];
+	LoraTxBuffer[22] = back_array.ir_sen_val_cal_trig[6];
+	LoraTxBuffer[23] = back_array.ir_sen_val_cal_trig[7];
+	LoraTxBuffer[24] = back_array.ir_sen_val_cal_trig[8];
+	LoraTxBuffer[25] = back_array.ir_sen_val_cal_trig[9];
+
 }
+
 
 /* USER CODE END 0 */
 
@@ -1119,20 +1147,20 @@ int main(void)
 
   while (1)
   {
+
 //	  agv_orientation = 0xF00F;
 //
-//	  if(lora_receive_toggle == 255){
-//
-//		  if(LoRa_transmit(&myLoRa, LoraTxBuffer, 3, 500) == 1){
-//			  //lora_receive_toggle = 0;
-//			  HAL_GPIO_TogglePin(LORA_TX_LED_GPIO_Port, LORA_TX_LED_Pin);
-//		  }
-//		  lora_receive_toggle = 0;
-//	  }
+	  if(lora_receive_toggle == 255){
+		  load_debug_info();
+		  if(LoRa_transmit(&myLoRa, LoraTxBuffer, 26, 500) == 1){
 
+			  HAL_GPIO_TogglePin(LORA_TX_LED_GPIO_Port, LORA_TX_LED_Pin);
+		  }
+		  lora_receive_toggle = 0;
+	  }
 
-//	  Line_Sensor_Calculation(&front_array);
-//	  Line_Sensor_Calculation(&back_array);
+	  Line_Sensor_Calculation(&front_array);
+	  Line_Sensor_Calculation(&back_array);
 
 //	  Line_Sensor_Calculation(line_sensor_front_values_dma,
 //							  line_sensor_front_values_calibrated,
@@ -1176,39 +1204,39 @@ int main(void)
 	  //PID_Forward_Rotation(10, 50, &agv_orientation);
 	  //agv_orientation = 0xF11F;
 
-	  rs485_TxData[0] = 0x1;  // slave address
-	  rs485_TxData[1] = 0x03;  // Function code for Read Holding Registers
-
-	  rs485_TxData[2] = 0x20;
-	  rs485_TxData[3] = 0x24;
-	  //The Register address will be 00000000 00000100 = 4 + 40001 = 40005
-
-	  rs485_TxData[4] = 0x00;
-	  rs485_TxData[5] = 0x01;
-	  // no of registers to read will be 00000000 00000101 = 5 Registers = 10 Bytes
-
-	  uint16_t crc = crc16(rs485_TxData, 6);
-	  rs485_TxData[6] = crc&0xFF;
-	  rs485_TxData[7] = (crc>>8)&0xFF;
-
-	  rs485_send_data(rs485_TxData);
-	  //HAL_Delay(10);
-	  rs485_TxData[0] = 0x1;  // slave address
-	  rs485_TxData[1] = 0x03;  // Function code for Read Holding Registers
-
-	  rs485_TxData[2] = 0x20;
-	  rs485_TxData[3] = 0x2C;
-	  //The Register address will be 00000000 00000100 = 4 + 40001 = 40005
-
-	  rs485_TxData[4] = 0x00;
-	  rs485_TxData[5] = 0x01;
-	  // no of registers to read will be 00000000 00000101 = 5 Registers = 10 Bytes
-
-	  crc = crc16(rs485_TxData, 6);
-	  rs485_TxData[6] = crc&0xFF;
-	  rs485_TxData[7] = (crc>>8)&0xFF;
-
-	  rs485_send_data(rs485_TxData);
+//	  rs485_TxData[0] = 0x1;  // slave address
+//	  rs485_TxData[1] = 0x03;  // Function code for Read Holding Registers
+//
+//	  rs485_TxData[2] = 0x20;
+//	  rs485_TxData[3] = 0x24;
+//	  //The Register address will be 00000000 00000100 = 4 + 40001 = 40005
+//
+//	  rs485_TxData[4] = 0x00;
+//	  rs485_TxData[5] = 0x01;
+//	  // no of registers to read will be 00000000 00000101 = 5 Registers = 10 Bytes
+//
+//	  uint16_t crc = crc16(rs485_TxData, 6);
+//	  rs485_TxData[6] = crc&0xFF;
+//	  rs485_TxData[7] = (crc>>8)&0xFF;
+//
+//	  rs485_send_data(rs485_TxData);
+//	  //HAL_Delay(10);
+//	  rs485_TxData[0] = 0x1;  // slave address
+//	  rs485_TxData[1] = 0x03;  // Function code for Read Holding Registers
+//
+//	  rs485_TxData[2] = 0x20;
+//	  rs485_TxData[3] = 0x2C;
+//	  //The Register address will be 00000000 00000100 = 4 + 40001 = 40005
+//
+//	  rs485_TxData[4] = 0x00;
+//	  rs485_TxData[5] = 0x01;
+//	  // no of registers to read will be 00000000 00000101 = 5 Registers = 10 Bytes
+//
+//	  crc = crc16(rs485_TxData, 6);
+//	  rs485_TxData[6] = crc&0xFF;
+//	  rs485_TxData[7] = (crc>>8)&0xFF;
+//
+//	  rs485_send_data(rs485_TxData);
 
 //	  motor_enable_velocity_mode(0x02);
 //	  HAL_Delay(10);

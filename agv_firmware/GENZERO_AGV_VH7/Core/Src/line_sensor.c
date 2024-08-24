@@ -47,6 +47,8 @@ void Line_Sensor_Calculation(ir_array *ir_struct){
     uint8_t on_sensor_total_number = 0;
 
     uint8_t middle_on_line = 0;
+    uint8_t left_on_line = 0;
+    uint8_t right_on_line = 0;
 
 
     for(i = 0; i < ir_struct->ir_sen_channel_num; i++){
@@ -83,9 +85,19 @@ void Line_Sensor_Calculation(ir_array *ir_struct){
         // start on line sensor calculation
         if(value > ir_struct->ir_sen_threshold){
             on_sensor_total_number++;
+            ir_struct->ir_sen_val_cal_trig[i] = 0xff;
             if(i >= 2 && i <= 7){
                 middle_on_line++;
             }
+            if(i <= 2){
+            	left_on_line++;
+            }
+            if(i >= 7){
+            	right_on_line++;
+            }
+        }
+        else{
+        	ir_struct->ir_sen_val_cal_trig[i] = 0x00;
         }
         // end on line sensor calculation
     }
@@ -107,8 +119,8 @@ void Line_Sensor_Calculation(ir_array *ir_struct){
 
     // start on line sensor calculation
 
-    ir_struct->ir_sen_on_line_left_num = 100;
-    ir_struct->ir_sen_on_line_right_num = 111;
+    ir_struct->ir_sen_on_line_left_num = left_on_line;
+    ir_struct->ir_sen_on_line_right_num = right_on_line;
 
     ir_struct->ir_sen_on_line_mid_num = middle_on_line;
 
