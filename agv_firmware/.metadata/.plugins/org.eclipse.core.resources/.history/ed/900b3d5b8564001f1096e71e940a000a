@@ -1,0 +1,26 @@
+/*
+ * rs485_driver.h
+ *
+ *  Created on: Aug 27, 2024
+ *      Author: ASUS
+ */
+
+#ifndef INC_RS485_DRIVER_H_
+#define INC_RS485_DRIVER_H_
+
+#include "main.h"
+
+typedef struct rs485_driver{
+	const 	 uint8_t  rs485_id;
+	const 	 uint
+	volatile uint8_t  rs485_RxData[16];
+	volatile uint8_t  rs485_TxData[8];
+	volatile uint8_t  rs485_isbusy;
+	volatile uint16_t rs485_FailCheck;
+	volatile uint8_t  rs485_connectivity;
+	volatile uint16_t rs485_exc_time;
+	volatile uint16_t rs485_t1;
+	volatile uint16_t rs485_t2;
+}rs485_driver;
+
+#endif /* INC_RS485_DRIVER_H_ */

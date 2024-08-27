@@ -31,10 +31,10 @@ typedef struct ir_array {
 
 
 void ir_array_init(ir_array *ir_struct,
-                   volatile uint16_t *ir_sen_val_cal,
+          volatile uint16_t *ir_sen_val_cal,
                    uint16_t *ir_sen_max_val,
                    uint16_t *ir_sen_min_val,
-             const uint8_t *ir_sen_channel_num,
+             const uint8_t  *ir_sen_channel_num,
           volatile uint16_t *ir_sen_read_line_val,
                    int      *ir_sen_read_line_old_val,
           volatile uint8_t  *ir_sen_on_line_total_num,

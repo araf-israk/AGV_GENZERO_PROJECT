@@ -2,6 +2,7 @@
 "./Core/Src/line_sensor.o"
 "./Core/Src/main.o"
 "./Core/Src/modbus_crc.o"
+"./Core/Src/rs485_driver.o"
 "./Core/Src/stm32h7xx_hal_msp.o"
 "./Core/Src/stm32h7xx_it.o"
 "./Core/Src/syscalls.o"

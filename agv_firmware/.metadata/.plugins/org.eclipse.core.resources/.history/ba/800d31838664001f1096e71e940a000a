@@ -1,0 +1,21 @@
+/*
+ * rs485_driver.c
+ *
+ *  Created on: Aug 27, 2024
+ *      Author: ASUS
+ */
+
+
+#include "rs485_driver.h"
+
+void rs485_init(rs485_driver *driver, UART_HandleTypeDef *huart){
+
+	HAL_UARTEx_ReceiveToIdle_IT(huart, driver->rs485_RxData, 16);
+}
+
+void rs485_send_data(rs485_driver *driver, uint8_t *data){
+	if(driver->rs485_isbusy == 0){
+		HAL_GPIO_WritePin(driver->rs485_enable_port, driver->rs485_enable_pin, GPIO_PIN_SET);
+		HAL_UART_Transmit(huart, pData, Size, Timeout)
+	}
+}

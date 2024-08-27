@@ -1,0 +1,4 @@
+../Core/Src/rs485_driver.c:11:6:rs485_init	16	static
+../Core/Src/rs485_driver.c:15:6:rs485_send_data	16	static
+../Core/Src/rs485_driver.c:24:6:rs485_set_speed	24	static
+../Core/Src/rs485_driver.c:47:6:rs485_enable_velocity_mode	24	static

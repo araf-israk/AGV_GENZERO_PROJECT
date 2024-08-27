@@ -56,10 +56,6 @@ void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
 
-void motor_enable_velocity_mode(uint8_t id);
-void rs485_send_data(uint8_t *data);
-void set_speed(uint8_t id, uint16_t speed, uint8_t dir);
-
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
@@ -73,8 +69,10 @@ void set_speed(uint8_t id, uint16_t speed, uint8_t dir);
 #define IN1_GPIO_Port GPIOA
 #define TRIG_Pin GPIO_PIN_8
 #define TRIG_GPIO_Port GPIOE
-#define TX_EN_Pin GPIO_PIN_13
-#define TX_EN_GPIO_Port GPIOB
+#define RS485_M2_TX_EN_Pin GPIO_PIN_15
+#define RS485_M2_TX_EN_GPIO_Port GPIOE
+#define RS485_M1_TX_EN_Pin GPIO_PIN_13
+#define RS485_M1_TX_EN_GPIO_Port GPIOB
 #define LORA_RX_LED_Pin GPIO_PIN_6
 #define LORA_RX_LED_GPIO_Port GPIOD
 #define LORA_NSS_Pin GPIO_PIN_10

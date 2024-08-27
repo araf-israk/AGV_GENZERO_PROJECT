@@ -25,6 +25,7 @@
 #include "modbus_crc.h"
 #include "line_sensor.h"
 #include "LoRa.h"
+#include "rs485_driver.h"
 
 /* USER CODE END Includes */
 
@@ -54,27 +55,37 @@ SPI_HandleTypeDef hspi1;
 TIM_HandleTypeDef htim2;
 
 UART_HandleTypeDef huart1;
+UART_HandleTypeDef huart3;
 
 /* USER CODE BEGIN PV */
 
 // #### RS485 ####
 
-uint8_t rs485_RxData[16];
-uint8_t rs485_TxData[8];
-uint32_t rs485_received_data;
+uint8_t rs485_m1_RxData[16];
+uint8_t rs485_m1_TxData[8];
 
-uint8_t rs485_isbusy = 0;
+uint8_t rs485_m2_RxData[16];
+uint8_t rs485_m2_TxData[8];
 
-uint16_t rs485_reg_address = 0;
-uint16_t rs485_reg_number = 0;
-uint8_t rs485_rx_num_bytes = 0;
+uint8_t rs485_m1_isbusy = 0;
+uint8_t rs485_m2_isbusy = 0;
+
+uint16_t rs485_m1_FailCheck = 0;
+uint16_t rs485_m2_FailCheck = 0;
+
+uint16_t rs485_m1_last_FailCheck = 0;
+uint16_t rs485_m2_last_FailCheck = 0;
+
+uint8_t rs485_m1_connectivity = 0;
+uint8_t rs485_m2_connectivity = 0;
 
 uint16_t rs485_exc_time = 0;
 uint32_t rs485_time1 = 0;
 uint32_t rs485_time2 = 0;
-uint16_t rs485_fail_check = 0;
-uint16_t rs485_last_fail_check = 0;
-uint8_t rs485_connectivity = 0;
+
+rs485_driver m1_driver;
+rs485_driver m2_driver;
+
 // #### END RS485 ####
 
 // -o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-
@@ -231,6 +242,7 @@ static void MX_ADC3_Init(void);
 static void MX_USART1_UART_Init(void);
 static void MX_TIM2_Init(void);
 static void MX_SPI1_Init(void);
+static void MX_USART3_UART_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -822,109 +834,117 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 
 void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
 {
-
-//	if(rs485_RxData[1] == 0x6){ //0x6 == writing function code
-//
-//	}
-	if(rs485_RxData[1] == 0x3){ //0x3 == reading function code
-		rs485_rx_num_bytes = rs485_RxData[2];
-		rs485_reg_address = (rs485_TxData[2] << 8) | (rs485_TxData[3]);
-		rs485_reg_number  = (rs485_TxData[4] << 8) | (rs485_TxData[5]);
-
-	}
 	//rs485_time2 = HAL_GetTick();
 	//rs485_exc_time = rs485_time2 - rs485_time1;
-	rs485_isbusy = 0;
-	rs485_fail_check = 0;
-	HAL_UARTEx_ReceiveToIdle_IT(&huart1, rs485_RxData, 32);
-}
 
-void rs485_send_data(uint8_t *data)
-{
-
-	if(rs485_isbusy == 0){
-		HAL_GPIO_WritePin(TX_EN_GPIO_Port, TX_EN_Pin, GPIO_PIN_SET);
-		HAL_UART_Transmit(&huart1, data, 8, 1000);
-		HAL_GPIO_WritePin(TX_EN_GPIO_Port,TX_EN_Pin , GPIO_PIN_RESET);
-		rs485_isbusy = 255;
-		//rs485_time1 = HAL_GetTick();
+//	rs485_fail_check = 0;
+	if(huart->Instance == USART1){
+		m2_driver.rs485_isbusy = 0;
+		HAL_UARTEx_ReceiveToIdle_IT(&huart1, m2_driver.rs485_RxData, 16);
 	}
-	else{
-		if(rs485_fail_check < 0xffff){
-			rs485_fail_check++;
-		}
-		else{
-			//Lost Connection to RS485
-			rs485_isbusy = 0;
-			HAL_Delay(20);
-		}
-
-		if(rs485_last_fail_check == 0xffff){
-			if(rs485_fail_check < 0xffff){
-				//Regained Connection to RS485
-
-				motor_enable_velocity_mode(0x01);
-				motor_enable_velocity_mode(0x02);
-				//rs485_connectivity++;
-			}
-		}
-		rs485_last_fail_check = rs485_fail_check;
+	if(huart->Instance == USART3){
+		m1_driver.rs485_isbusy = 0;
+		HAL_UARTEx_ReceiveToIdle_IT(&huart3, m1_driver.rs485_RxData, 16);
 	}
 }
 
+//void rs485m2_send_data(uint8_t *data){
+//	if(rs485m2_isbusy == 0){
+//		HAL_GPIO_WritePin(TX_ENM2_GPIO_Port, TX_ENM2_Pin, GPIO_PIN_SET);
+//		HAL_UART_Transmit(&huart3, data, 8, 500);
+//		HAL_GPIO_WritePin(TX_ENM2_GPIO_Port,TX_ENM2_Pin , GPIO_PIN_RESET);
+//		rs485m2_isbusy = 255;
+//		//rs485_time1 = HAL_GetTick();
+//	}
+//}
 
-void motor_enable_velocity_mode(uint8_t id){
-	  rs485_TxData[0] = id;
-	  rs485_TxData[1] = 0x06;  // Function code
-	  //address 2032 -> Operating Mode
-	  rs485_TxData[2] = 0x20;  // High 8 bit register address
-	  rs485_TxData[3] = 0x32;  // Low  8 bit register address
-	  //data 0x03 -> Set Velocity Mode
-	  rs485_TxData[4] = 0x00;  // High 8 bit register data
-	  rs485_TxData[5] = 0x03;  // Low  8 bit register data
-	  uint16_t crc = crc16(rs485_TxData, 6);
-	  rs485_TxData[6] = crc&0xFF;
-	  rs485_TxData[7] = (crc>>8)&0xFF;
-	  rs485_send_data(rs485_TxData);
+//void rs485_send_data(uint8_t *data)
+//{
+//
+//	if(rs485_isbusy == 0){
+//		HAL_GPIO_WritePin(TX_EN_GPIO_Port, TX_EN_Pin, GPIO_PIN_SET);
+//		HAL_UART_Transmit(&huart1, data, 8, 500);
+//		HAL_GPIO_WritePin(TX_EN_GPIO_Port,TX_EN_Pin , GPIO_PIN_RESET);
+//		rs485_isbusy = 255;
+//		//rs485_time1 = HAL_GetTick();
+//	}
+	//HAL_Delay(5);
+//	else{
+//		if(rs485_fail_check < 0xffff){
+//			rs485_fail_check++;
+//		}
+//		else{
+//			//Lost Connection to RS485
+//			rs485_isbusy = 0;
+//			HAL_Delay(20);
+//		}
+//
+//		if(rs485_last_fail_check == 0xffff){
+//			if(rs485_fail_check < 0xffff){
+//				//Regained Connection to RS485
+//
+//				motor_enable_velocity_mode(0x01);
+//				motor_enable_velocity_mode(0x02);
+//				//rs485_connectivity++;
+//			}
+//		}
+//		rs485_last_fail_check = rs485_fail_check;
+//	}
+//}
 
 
-	  rs485_TxData[0] = id;
-	  rs485_TxData[1] = 0x06;  // Function code
-	  //address 2031 -> Control Word
-	  rs485_TxData[2] = 0x20;  // High 8 bit register address
-	  rs485_TxData[3] = 0x31;  // Low  8 bit register address
-	  //data 0x08 -> Enable Motor
-	  rs485_TxData[4] = 0x00;  // High 8 bit register data
-	  rs485_TxData[5] = 0x08;  // Low  8 bit register data
-	  crc = crc16(rs485_TxData, 6);
-	  rs485_TxData[6] = crc&0xFF;
-	  rs485_TxData[7] = (crc>>8)&0xFF;
-	  rs485_send_data(rs485_TxData);
+//void motor_enable_velocity_mode(uint8_t id){
+//	  rs485_TxData[0] = id;
+//	  rs485_TxData[1] = 0x06;  // Function code
+//	  //address 2032 -> Operating Mode
+//	  rs485_TxData[2] = 0x20;  // High 8 bit register address
+//	  rs485_TxData[3] = 0x32;  // Low  8 bit register address
+//	  //data 0x03 -> Set Velocity Mode
+//	  rs485_TxData[4] = 0x00;  // High 8 bit register data
+//	  rs485_TxData[5] = 0x03;  // Low  8 bit register data
+//	  uint16_t crc = crc16(rs485_TxData, 6);
+//	  rs485_TxData[6] = crc&0xFF;
+//	  rs485_TxData[7] = (crc>>8)&0xFF;
+//	  rs485_send_data(rs485_TxData);
+//
+//
+//	  rs485_TxData[0] = id;
+//	  rs485_TxData[1] = 0x06;  // Function code
+//	  //address 2031 -> Control Word
+//	  rs485_TxData[2] = 0x20;  // High 8 bit register address
+//	  rs485_TxData[3] = 0x31;  // Low  8 bit register address
+//	  //data 0x08 -> Enable Motor
+//	  rs485_TxData[4] = 0x00;  // High 8 bit register data
+//	  rs485_TxData[5] = 0x08;  // Low  8 bit register data
+//	  crc = crc16(rs485_TxData, 6);
+//	  rs485_TxData[6] = crc&0xFF;
+//	  rs485_TxData[7] = (crc>>8)&0xFF;
+//	  rs485_send_data(rs485_TxData);
+//
+//}
 
-}
-
-void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
-
-	rs485_TxData[0] = id;
-	rs485_TxData[1] = 0x06;  // Function code
-	//address 203A -> Target Speed
-	rs485_TxData[2] = 0x20;  // High 8 bit register address
-	rs485_TxData[3] = 0x3A;  // Low  8 bit register address
-	// Set Speed and Direction
-	if(dir == 0){
-		rs485_TxData[4] = (speed>>8)&0xFF; // High 8 bit register data
-		rs485_TxData[5] = speed&0xFF; // Low  8 bit register address
-	}
-	if(dir == 1){
-		speed = (~speed) + 1;
-		rs485_TxData[4] = (speed>>8)&0xFF; // High 8 bit register data
-		rs485_TxData[5] = speed&0xFF; // Low  8 bit register address
-	}
-	uint16_t crc = crc16(rs485_TxData, 6);
-	rs485_TxData[6] = crc&0xFF;
-	rs485_TxData[7] = (crc>>8)&0xFF;
-	rs485_send_data(rs485_TxData);
-}
+//void set_speed(uint8_t id, uint16_t speed, uint8_t dir){
+//
+//	rs485_TxData[0] = id;
+//	rs485_TxData[1] = 0x06;  // Function code
+//	//address 203A -> Target Speed
+//	rs485_TxData[2] = 0x20;  // High 8 bit register address
+//	rs485_TxData[3] = 0x3A;  // Low  8 bit register address
+//	// Set Speed and Direction
+//	if(dir == 0){
+//		rs485_TxData[4] = (speed>>8)&0xFF; // High 8 bit register data
+//		rs485_TxData[5] = speed&0xFF; // Low  8 bit register address
+//	}
+//	if(dir == 1){
+//		speed = (~speed) + 1;
+//		rs485_TxData[4] = (speed>>8)&0xFF; // High 8 bit register data
+//		rs485_TxData[5] = speed&0xFF; // Low  8 bit register address
+//	}
+//	uint16_t crc = crc16(rs485_TxData, 6);
+//	rs485_TxData[6] = crc&0xFF;
+//	rs485_TxData[7] = (crc>>8)&0xFF;
+//	rs485_send_data(rs485_TxData);
+//}
 
 /* USER CODE END 0 */
 
@@ -966,18 +986,35 @@ int main(void)
   MX_USART1_UART_Init();
   MX_TIM2_Init();
   MX_SPI1_Init();
+  MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
 
+  m1_driver.rs485_id = 0x01;
+  m1_driver.rs485_huart = &huart3;
+  m1_driver.rs485_enable_port = RS485_M2_TX_EN_GPIO_Port;
+  m1_driver.rs485_enable_pin = RS485_M2_TX_EN_Pin;
+
+  m2_driver.rs485_id = 0x02;
+  m2_driver.rs485_huart = &huart1;
+  m2_driver.rs485_enable_port = RS485_M1_TX_EN_GPIO_Port;
+  m2_driver.rs485_enable_pin = RS485_M1_TX_EN_Pin;
+
+  rs485_init(&m1_driver);
+  rs485_init(&m2_driver);
 
 
-  HAL_UARTEx_ReceiveToIdle_IT(&huart1, rs485_RxData, 16);
+
+//  HAL_UARTEx_ReceiveToIdle_IT(&huart1, rs485_RxData, 128);
+//  HAL_UARTEx_ReceiveToIdle_IT(&huart3, rs485m2_RxData, 16);
+  //HAL_UART_Receive_DMA(&huart1, rs485_RxData, 16);
+
 
 
   HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
   HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2);
 
-//  motor_enable_velocity_mode(0x01);
-//  motor_enable_velocity_mode(0x02);
+  //motor_enable_velocity_mode(0x01);
+  //motor_enable_velocity_mode(0x02);
 
 
 
@@ -1039,8 +1076,8 @@ int main(void)
                 &line_sensor_back_on_line_right_number,
                 &line_sensor_back_threshold);
 
-  Line_Sensor_Calculation(&front_array);
-  Line_Sensor_Calculation(&back_array);
+//  Line_Sensor_Calculation(&front_array);
+//  Line_Sensor_Calculation(&back_array);
 
 //  if((back_array.ir_sen_on_line_total_num >= 9) &&(front_array.ir_sen_on_line_total_num >= 1)){
 //	  agv_orientation = 0xF00F;
@@ -1057,26 +1094,49 @@ int main(void)
   while (1)
   {
 
-	  agv_orientation = 0xF00F;
+//	  agv_orientation = 0xF00F;
+////
+//	  if(lora_receive_toggle == 255){
+//		  if(LoRa_transmit(&myLoRa, LoraTxBuffer, 26, 500) == 1){
 //
-	  if(lora_receive_toggle == 255){
-		  if(LoRa_transmit(&myLoRa, LoraTxBuffer, 26, 500) == 1){
+//			  HAL_GPIO_TogglePin(LORA_TX_LED_GPIO_Port, LORA_TX_LED_Pin);
+//		  }
+//		  lora_receive_toggle = 0;
+//	  }
+//
+//	  Line_Sensor_Calculation(&front_array);
+//	  Line_Sensor_Calculation(&back_array);
 
-			  HAL_GPIO_TogglePin(LORA_TX_LED_GPIO_Port, LORA_TX_LED_Pin);
-		  }
-		  lora_receive_toggle = 0;
-	  }
-
-	  Line_Sensor_Calculation(&front_array);
-	  Line_Sensor_Calculation(&back_array);
-
+//	  motor_enable_velocity_mode(0x01);
 //	  motor_enable_velocity_mode(0x02);
 //	  HAL_Delay(10);
 //
-//	  set_speed(0x01, 100, 1);
-//	  HAL_Delay(100);
-//	  set_speed(0x02, 50, 0);
-//	  HAL_Delay(10);
+	  rs485_enable_velocity_mode(&m1_driver);
+	  rs485_set_speed(&m1_driver, 100, 0);
+	  rs485_enable_velocity_mode(&m2_driver);
+	  rs485_set_speed(&m2_driver, 100, 1);
+//	  HAL_Delay(1000);
+//
+//	  //set_speed(0x01, 10, 1);
+//	  set_speed(0x02, 100, 0);
+//	  HAL_Delay(1000);
+//
+//	  set_speed(0x01, 50, 0);
+//	  set_speed(0x02, 50, 1);
+//	  HAL_Delay(1000);
+
+//	  rs485_TxData[0] = 0x01;
+//	  rs485_TxData[1] = 0x03;  // Function code
+//	  //address 2032 -> Operating Mode
+//	  rs485_TxData[2] = 0x20;  // High 8 bit register address
+//	  rs485_TxData[3] = 0x24;  // Low  8 bit register address
+//	  //data 0x03 -> Set Velocity Mode
+//	  rs485_TxData[4] = 0x00;  // High 8 bit register data
+//	  rs485_TxData[5] = 0x01;  // Low  8 bit register data
+//	  uint16_t crc = crc16(rs485_TxData, 6);
+//	  rs485_TxData[6] = crc&0xFF;
+//	  rs485_TxData[7] = (crc>>8)&0xFF;
+//	  rs485_send_data(rs485_TxData);
 
 //	  motor_enable_velocity_mode(0x01);
 //	  HAL_Delay(10);
@@ -1595,7 +1655,7 @@ static void MX_TIM2_Init(void)
   htim2.Init.Prescaler = 64;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim2.Init.Period = 255;
-  htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV4;
+  htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
   if (HAL_TIM_PWM_Init(&htim2) != HAL_OK)
   {
@@ -1675,6 +1735,54 @@ static void MX_USART1_UART_Init(void)
 }
 
 /**
+  * @brief USART3 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_USART3_UART_Init(void)
+{
+
+  /* USER CODE BEGIN USART3_Init 0 */
+
+  /* USER CODE END USART3_Init 0 */
+
+  /* USER CODE BEGIN USART3_Init 1 */
+
+  /* USER CODE END USART3_Init 1 */
+  huart3.Instance = USART3;
+  huart3.Init.BaudRate = 115200;
+  huart3.Init.WordLength = UART_WORDLENGTH_8B;
+  huart3.Init.StopBits = UART_STOPBITS_1;
+  huart3.Init.Parity = UART_PARITY_NONE;
+  huart3.Init.Mode = UART_MODE_TX_RX;
+  huart3.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart3.Init.OverSampling = UART_OVERSAMPLING_16;
+  huart3.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
+  huart3.Init.ClockPrescaler = UART_PRESCALER_DIV1;
+  huart3.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
+  if (HAL_UART_Init(&huart3) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  if (HAL_UARTEx_SetTxFifoThreshold(&huart3, UART_TXFIFO_THRESHOLD_1_8) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  if (HAL_UARTEx_SetRxFifoThreshold(&huart3, UART_RXFIFO_THRESHOLD_1_8) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  if (HAL_UARTEx_DisableFifoMode(&huart3) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN USART3_Init 2 */
+
+  /* USER CODE END USART3_Init 2 */
+
+}
+
+/**
   * Enable DMA controller clock
   */
 static void MX_DMA_Init(void)
@@ -1721,10 +1829,10 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOA, IN3_Pin|IN4_Pin|IN2_Pin|IN1_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(TRIG_GPIO_Port, TRIG_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOE, TRIG_Pin|RS485_M2_TX_EN_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(TX_EN_GPIO_Port, TX_EN_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(RS485_M1_TX_EN_GPIO_Port, RS485_M1_TX_EN_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7|LORA_TX_LED_Pin, GPIO_PIN_RESET);
@@ -1764,12 +1872,19 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
   HAL_GPIO_Init(TRIG_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : TX_EN_Pin */
-  GPIO_InitStruct.Pin = TX_EN_Pin;
+  /*Configure GPIO pin : RS485_M2_TX_EN_Pin */
+  GPIO_InitStruct.Pin = RS485_M2_TX_EN_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(TX_EN_GPIO_Port, &GPIO_InitStruct);
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+  HAL_GPIO_Init(RS485_M2_TX_EN_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : RS485_M1_TX_EN_Pin */
+  GPIO_InitStruct.Pin = RS485_M1_TX_EN_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+  HAL_GPIO_Init(RS485_M1_TX_EN_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PG7 LORA_NSS_Pin LORA_RST_Pin LORA_TX_LED_Pin */
   GPIO_InitStruct.Pin = GPIO_PIN_7|LORA_NSS_Pin|LORA_RST_Pin|LORA_TX_LED_Pin;
