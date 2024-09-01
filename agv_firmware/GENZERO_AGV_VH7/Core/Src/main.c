@@ -100,7 +100,7 @@ uint8_t time_t2 = 0;
 #define line_sensor_front_total_channel 10
 #define line_sensor_back_total_channel 10
 
-#define max_rs485_speed 255
+#define max_rs485_speed 100
 
 int line_sensor_front_read_line_old_value;
 int line_sensor_back_read_line_old_value;
@@ -118,11 +118,11 @@ volatile uint8_t line_sensor_back_on_line_left_number, line_sensor_back_on_line_
 volatile uint8_t line_sensor_back_on_line_total_number;
 
 
-uint16_t line_sensor_front_max_sensor_vales[line_sensor_front_total_channel] = {4095, 4095, 4095, 4095, 4095, 4095, 4095, 3388, 4095, 4095};
-uint16_t line_sensor_front_min_sensor_vales[line_sensor_front_total_channel] = {1700, 1800, 1300, 1000, 2300, 1400, 1100, 900, 1300, 2800};
+uint16_t line_sensor_front_max_sensor_vales[line_sensor_front_total_channel] = {4095, 4095, 4095, 4095, 4095, 4095, 4095, 3435, 4095, 4095};
+uint16_t line_sensor_front_min_sensor_vales[line_sensor_front_total_channel] = {722, 1390, 1352, 1147, 2559, 1206, 958, 943, 1242, 2756};
 
 uint16_t line_sensor_back_max_sensor_vales[line_sensor_back_total_channel] = {4095, 4095, 4095, 4095, 4095, 4095, 4095, 4095, 4095, 4095};
-uint16_t line_sensor_back_min_sensor_vales[line_sensor_back_total_channel] = {1400, 1300, 1200, 1000, 1500, 1900, 1800, 1500, 1500, 1500};
+uint16_t line_sensor_back_min_sensor_vales[line_sensor_back_total_channel] = {1083, 1056, 919, 843, 1585, 2045, 1517, 2218, 1390, 1430};
 
 
 const uint8_t line_sensor_front_channel_number = sizeof(line_sensor_front_values_dma)/sizeof(line_sensor_front_values_dma[0]);
@@ -178,7 +178,7 @@ volatile float pid_motor_speed_change;
 
 volatile uint16_t pid_motor_speed_A;
 volatile uint16_t pid_motor_speed_B;
-uint16_t pid_motor_base_speed = 200;
+uint16_t pid_motor_base_speed = 50;
 
 
 uint8_t agv_turn_count = 0;
@@ -363,8 +363,8 @@ void PID_Forward_Rotation(uint16_t enableA, uint16_t enableB, uint16_t *orientat
 		//Left
 		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, enableB);
 
-		set_speed(0x01, enableB, 1);
-		set_speed(0x02, enableA, 0);
+//		set_speed(0x01, enableB, 1);
+//		set_speed(0x02, enableA, 0);
 
 	}
 
@@ -372,113 +372,113 @@ void PID_Forward_Rotation(uint16_t enableA, uint16_t enableB, uint16_t *orientat
 
 }
 
-//void PID_Motor_Turn_Left(uint16_t _speed, uint16_t *orientation){
-//	if(*orientation == 0xF11F){
-//		//LEFT
-//		HAL_GPIO_WritePin(IN1_GPIO_Port, IN1_Pin, GPIO_PIN_SET);
-//		HAL_GPIO_WritePin(IN2_GPIO_Port, IN2_Pin, GPIO_PIN_RESET);
-//
-//		//RIGHT
-//		HAL_GPIO_WritePin(IN3_GPIO_Port, IN3_Pin, GPIO_PIN_SET);
-//		HAL_GPIO_WritePin(IN4_GPIO_Port, IN4_Pin, GPIO_PIN_RESET);
-//
-//		//Right
-//		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, _speed);
-//
-//		//Left
-//		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, _speed);
-//
+void PID_Motor_Turn_Left(uint16_t _speed, uint16_t *orientation){
+	if(*orientation == 0xF11F){
+		//LEFT
+		HAL_GPIO_WritePin(IN1_GPIO_Port, IN1_Pin, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(IN2_GPIO_Port, IN2_Pin, GPIO_PIN_RESET);
+
+		//RIGHT
+		HAL_GPIO_WritePin(IN3_GPIO_Port, IN3_Pin, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(IN4_GPIO_Port, IN4_Pin, GPIO_PIN_RESET);
+
+		//Right
+		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, _speed);
+
+		//Left
+		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, _speed);
+
 //		set_speed(0x01, _speed, 0);
 //		set_speed(0x02, _speed, 0);
-//	}
-//
-//	if(*orientation == 0xF00F){
-//
-//		//LEFT
-//		HAL_GPIO_WritePin(IN1_GPIO_Port, IN1_Pin, GPIO_PIN_SET);
-//		HAL_GPIO_WritePin(IN2_GPIO_Port, IN2_Pin, GPIO_PIN_RESET);
-//
-//		//RIGHT
-//		HAL_GPIO_WritePin(IN3_GPIO_Port, IN3_Pin, GPIO_PIN_SET);
-//		HAL_GPIO_WritePin(IN4_GPIO_Port, IN4_Pin, GPIO_PIN_RESET);
-//
-//		//Right
-//		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, _speed);
-//
-//		//Left
-//		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, _speed);
-//
+	}
+
+	if(*orientation == 0xF00F){
+
+		//LEFT
+		HAL_GPIO_WritePin(IN1_GPIO_Port, IN1_Pin, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(IN2_GPIO_Port, IN2_Pin, GPIO_PIN_RESET);
+
+		//RIGHT
+		HAL_GPIO_WritePin(IN3_GPIO_Port, IN3_Pin, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(IN4_GPIO_Port, IN4_Pin, GPIO_PIN_RESET);
+
+		//Right
+		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, _speed);
+
+		//Left
+		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, _speed);
+
 //		set_speed(0x01, _speed, 0);
 //		set_speed(0x02, _speed, 0);
-//
-//	}
-//}
 
-//void PID_Motor_Turn_Right(uint16_t _speed, uint16_t *orientation){
-//	if(*orientation == 0xF11F){
-//		//LEFT
-//		HAL_GPIO_WritePin(IN1_GPIO_Port, IN1_Pin, GPIO_PIN_RESET);
-//		HAL_GPIO_WritePin(IN2_GPIO_Port, IN2_Pin, GPIO_PIN_SET);
-//
-//		//RIGHT
-//		HAL_GPIO_WritePin(IN3_GPIO_Port, IN3_Pin, GPIO_PIN_RESET);
-//		HAL_GPIO_WritePin(IN4_GPIO_Port, IN4_Pin, GPIO_PIN_SET);
-//
-//		//Right
-//		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, _speed);
-//
-//		//Left
-//		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, _speed);
-//
+	}
+}
+
+void PID_Motor_Turn_Right(uint16_t _speed, uint16_t *orientation){
+	if(*orientation == 0xF11F){
+		//LEFT
+		HAL_GPIO_WritePin(IN1_GPIO_Port, IN1_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(IN2_GPIO_Port, IN2_Pin, GPIO_PIN_SET);
+
+		//RIGHT
+		HAL_GPIO_WritePin(IN3_GPIO_Port, IN3_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(IN4_GPIO_Port, IN4_Pin, GPIO_PIN_SET);
+
+		//Right
+		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, _speed);
+
+		//Left
+		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, _speed);
+
 //		set_speed(0x01, _speed, 1);
 //		set_speed(0x02, _speed, 1);
-//	}
-//
-//	if(*orientation == 0xF00F){
-//
-//		//LEFT
-//		HAL_GPIO_WritePin(IN1_GPIO_Port, IN1_Pin, GPIO_PIN_RESET);
-//		HAL_GPIO_WritePin(IN2_GPIO_Port, IN2_Pin, GPIO_PIN_SET);
-//
-//		//RIGHT
-//		HAL_GPIO_WritePin(IN3_GPIO_Port, IN3_Pin, GPIO_PIN_RESET);
-//		HAL_GPIO_WritePin(IN4_GPIO_Port, IN4_Pin, GPIO_PIN_SET);
-//
-//		//Right
-//		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, _speed);
-//
-//		//Left
-//		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, _speed);
-//
+	}
+
+	if(*orientation == 0xF00F){
+
+		//LEFT
+		HAL_GPIO_WritePin(IN1_GPIO_Port, IN1_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(IN2_GPIO_Port, IN2_Pin, GPIO_PIN_SET);
+
+		//RIGHT
+		HAL_GPIO_WritePin(IN3_GPIO_Port, IN3_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(IN4_GPIO_Port, IN4_Pin, GPIO_PIN_SET);
+
+		//Right
+		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, _speed);
+
+		//Left
+		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, _speed);
+
 //		set_speed(0x01, _speed, 1);
 //		set_speed(0x02, _speed, 1);
-//
-//	}
-//
-//}
+
+	}
+
+}
 
 
-//void PID_Motor_All_Break(){
-//	//LEFT
-//	HAL_GPIO_WritePin(IN1_GPIO_Port, IN1_Pin, GPIO_PIN_RESET);
-//	HAL_GPIO_WritePin(IN2_GPIO_Port, IN2_Pin, GPIO_PIN_RESET);
-//
-//	//RIGHT
-//	HAL_GPIO_WritePin(IN3_GPIO_Port, IN3_Pin, GPIO_PIN_RESET);
-//	HAL_GPIO_WritePin(IN4_GPIO_Port, IN4_Pin, GPIO_PIN_RESET);
-//
-//	//Right
-//	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, 0);
-//
-//	//Left
-//	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, 0);
-//
+void PID_Motor_All_Break(){
+	//LEFT
+	HAL_GPIO_WritePin(IN1_GPIO_Port, IN1_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(IN2_GPIO_Port, IN2_Pin, GPIO_PIN_RESET);
+
+	//RIGHT
+	HAL_GPIO_WritePin(IN3_GPIO_Port, IN3_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(IN4_GPIO_Port, IN4_Pin, GPIO_PIN_RESET);
+
+	//Right
+	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, 0);
+
+	//Left
+	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, 0);
+
 //	motor_enable_velocity_mode(0x01);
 //	motor_enable_velocity_mode(0x02);
 //	set_speed(0x01, 0, 1);
 //	set_speed(0x02, 0, 0);
-//
-//}
+
+}
 
 void AGV_waiting(){
 	if(Target_Station == Current_Station){
@@ -543,242 +543,242 @@ void AGV_waiting(){
 	}
 }
 
-//void AGV_Turn_Detection_Completion(volatile uint16_t *sensor_calibrated_values,
-//								   volatile uint8_t  *sensor_middle_on_line_number,
-//								   volatile uint8_t  *sensor_total_on_line_number,
-//								   	   	   	uint8_t  *decision_array,
-//											uint16_t *orientation){
-//#define white_detection_thresh_hold 500
-//#define black_detection_thresh_hold 500
-//#define sensor_mid_on_line_thresh_hold 1
-//#define first_timer_buffer 800
-//#define second_timer_buffer 300
-//#define skip_turn_timer_buffer 200
-//#define base_speed 50
-//
-//	uint8_t _turn_decide = 0;
-//
-//	if((((sensor_calibrated_values[8] > black_detection_thresh_hold) && (sensor_calibrated_values[9] > black_detection_thresh_hold)) ||
-//	   ((sensor_calibrated_values[0] > black_detection_thresh_hold) && (sensor_calibrated_values[1] > black_detection_thresh_hold))) && (*sensor_total_on_line_number >= 8)){
-////		if((*sensor_middle_on_line_number >= 5) || (*sensor_middle_on_line_number == 6)){
-//
-//
-//			HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_7);
-//
-////			PID_Forward_Rotation(base_speed, base_speed, orientation);
-////			HAL_Delay(100);
-//
-//			agv_turn_count += 1;
-//
-//			PID_Motor_All_Break();
-//
-//			HAL_Delay(2000);
-//
-//			if(decision_array[agv_turn_count - 1] == 'E'){
-//
-////
-////
-////
-////								  Line_Sensor_Calculation(line_sensor_front_values_dma,
-////														  line_sensor_front_values_calibrated,
-////														  line_sensor_front_max_sensor_vales,
-////														  line_sensor_front_min_sensor_vales,
-////														 &line_sensor_front_on_line_middle_number,
-////														 &line_sensor_front_on_line_total_number,
-////														  line_sensor_front_trigger_threshhold,
-////														  line_sensor_front_total_channel,
-////														 &line_sensor_front_read_line_value);
-////
-////								  Line_Sensor_Calculation(line_sensor_back_values_dma,
-////														  line_sensor_back_values_calibrated,
-////														  line_sensor_back_max_sensor_vales,
-////														  line_sensor_back_min_sensor_vales,
-////														 &line_sensor_back_on_line_middle_number,
-////														 &line_sensor_back_on_line_total_number,
-////														  line_sensor_back_trigger_threshhold,
-////														  line_sensor_back_total_channel,
-////														 &line_sensor_back_read_line_value);
-//
-////								  if(line_sensor_back_on_line_total_number >= 9){
-////									  agv_orientation = 0xF00F;
-////								  }
-////								  if(line_sensor_front_on_line_total_number >= 9){
-////									  agv_orientation = 0xF11F;
-////								  }
-//
-//
-//								PID_Motor_All_Break();
-//
-//
-//
-//								Current_Station = Target_Station;
-//
-//								On_Task = 0xF00F;
-//
-//								if(agv_orientation == 0xF00F){
-//									agv_orientation = 0xF11F;
-//								}
-//								else if(agv_orientation == 0xF11F){
-//									agv_orientation = 0xF00F;
-//								}
-//
-//								_turn_decide = 0;
-//								agv_turn_count = 0;
-//
-//
-//			}
-//			else if(decision_array[agv_turn_count - 1] != 'E'){
-//
-//				//line_gap_disable = 1;
-//
-//				PID_Forward_Rotation(base_speed, base_speed, orientation);
-//				HAL_Delay(first_timer_buffer);
-//				PID_Motor_All_Break();
-//
-//				HAL_Delay(1000);
-//
-//				if(decision_array[agv_turn_count - 1] == 'R'){
-//
-//					PID_Motor_Turn_Right(base_speed, orientation);
-//					HAL_Delay(second_timer_buffer);
-//					PID_Motor_All_Break();
-//
-//					HAL_Delay(1000);
-//
-//					_turn_decide = 'R';
-//				}
-//				if(decision_array[agv_turn_count - 1] == 'L'){
-//
-//					PID_Motor_Turn_Left(base_speed, orientation);
-//					HAL_Delay(second_timer_buffer);
-//					PID_Motor_All_Break();
-//
-//					HAL_Delay(1000);
-//
-//					_turn_decide = 'L';
-//				}
-//				if(decision_array[agv_turn_count - 1] == 'F'){
-//
-//					PID_Forward_Rotation(base_speed, base_speed, orientation);
-//					HAL_Delay(skip_turn_timer_buffer);
-//					_turn_decide = 0;
-//				}
-//			}
-//
-//	}
-//
-//	if((sensor_calibrated_values[8] < white_detection_thresh_hold) && (sensor_calibrated_values[9] < white_detection_thresh_hold) &&
-//			(sensor_calibrated_values[0] > black_detection_thresh_hold) && (sensor_calibrated_values[1] > black_detection_thresh_hold)){
-//			if((*sensor_middle_on_line_number >= 3) && (*sensor_middle_on_line_number < 6)){
-//
-//				//line_gap_disable = 1;
-//
+void AGV_Turn_Detection_Completion(volatile uint16_t *sensor_calibrated_values,
+								   volatile uint8_t  *sensor_middle_on_line_number,
+								   volatile uint8_t  *sensor_total_on_line_number,
+								   	   	   	uint8_t  *decision_array,
+											uint16_t *orientation){
+#define white_detection_thresh_hold 500
+#define black_detection_thresh_hold 500
+#define sensor_mid_on_line_thresh_hold 1
+#define first_timer_buffer 800
+#define second_timer_buffer 300
+#define skip_turn_timer_buffer 200
+#define base_speed 50
+
+	uint8_t _turn_decide = 0;
+
+	if((((sensor_calibrated_values[8] > black_detection_thresh_hold) && (sensor_calibrated_values[9] > black_detection_thresh_hold)) ||
+	   ((sensor_calibrated_values[0] > black_detection_thresh_hold) && (sensor_calibrated_values[1] > black_detection_thresh_hold))) && (*sensor_total_on_line_number >= 8)){
+//		if((*sensor_middle_on_line_number >= 5) || (*sensor_middle_on_line_number == 6)){
+
+
+			HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_7);
+
 //			PID_Forward_Rotation(base_speed, base_speed, orientation);
-//			HAL_Delay(first_timer_buffer);
-//			PID_Motor_All_Break();
+//			HAL_Delay(100);
+
+			agv_turn_count += 1;
+
+			PID_Motor_All_Break();
+
+			HAL_Delay(2000);
+
+			if(decision_array[agv_turn_count - 1] == 'E'){
+
+
+
+
+//								  Line_Sensor_Calculation(line_sensor_front_values_dma,
+//														  line_sensor_front_values_calibrated,
+//														  line_sensor_front_max_sensor_vales,
+//														  line_sensor_front_min_sensor_vales,
+//														 &line_sensor_front_on_line_middle_number,
+//														 &line_sensor_front_on_line_total_number,
+//														  line_sensor_front_trigger_threshhold,
+//														  line_sensor_front_total_channel,
+//														 &line_sensor_front_read_line_value);
 //
-//			HAL_Delay(1000);
+//								  Line_Sensor_Calculation(line_sensor_back_values_dma,
+//														  line_sensor_back_values_calibrated,
+//														  line_sensor_back_max_sensor_vales,
+//														  line_sensor_back_min_sensor_vales,
+//														 &line_sensor_back_on_line_middle_number,
+//														 &line_sensor_back_on_line_total_number,
+//														  line_sensor_back_trigger_threshhold,
+//														  line_sensor_back_total_channel,
+//														 &line_sensor_back_read_line_value);
 //
-//			agv_turn_count += 1;
+//								  if(line_sensor_back_on_line_total_number >= 9){
+//									  agv_orientation = 0xF00F;
+//								  }
+//								  if(line_sensor_front_on_line_total_number >= 9){
+//									  agv_orientation = 0xF11F;
+//								  }
+
+
+								PID_Motor_All_Break();
+
+
+
+								Current_Station = Target_Station;
+
+								On_Task = 0xF00F;
+
+								if(agv_orientation == 0xF00F){
+									agv_orientation = 0xF11F;
+								}
+								else if(agv_orientation == 0xF11F){
+									agv_orientation = 0xF00F;
+								}
+
+								_turn_decide = 0;
+								agv_turn_count = 0;
+
+
+			}
+			else if(decision_array[agv_turn_count - 1] != 'E'){
+
+				//line_gap_disable = 1;
+
+				PID_Forward_Rotation(base_speed, base_speed, orientation);
+				HAL_Delay(first_timer_buffer);
+				PID_Motor_All_Break();
+
+				HAL_Delay(1000);
+
+				if(decision_array[agv_turn_count - 1] == 'R'){
+
+					PID_Motor_Turn_Right(base_speed, orientation);
+					HAL_Delay(second_timer_buffer);
+					PID_Motor_All_Break();
+
+					HAL_Delay(1000);
+
+					_turn_decide = 'R';
+				}
+				if(decision_array[agv_turn_count - 1] == 'L'){
+
+					PID_Motor_Turn_Left(base_speed, orientation);
+					HAL_Delay(second_timer_buffer);
+					PID_Motor_All_Break();
+
+					HAL_Delay(1000);
+
+					_turn_decide = 'L';
+				}
+				if(decision_array[agv_turn_count - 1] == 'F'){
+
+					PID_Forward_Rotation(base_speed, base_speed, orientation);
+					HAL_Delay(skip_turn_timer_buffer);
+					_turn_decide = 0;
+				}
+			}
+
+	}
+
+	if((sensor_calibrated_values[8] < white_detection_thresh_hold) && (sensor_calibrated_values[9] < white_detection_thresh_hold) &&
+			(sensor_calibrated_values[0] > black_detection_thresh_hold) && (sensor_calibrated_values[1] > black_detection_thresh_hold)){
+			if((*sensor_middle_on_line_number >= 3) && (*sensor_middle_on_line_number < 6)){
+
+				//line_gap_disable = 1;
+
+			PID_Forward_Rotation(base_speed, base_speed, orientation);
+			HAL_Delay(first_timer_buffer);
+			PID_Motor_All_Break();
+
+			HAL_Delay(1000);
+
+			agv_turn_count += 1;
+
+			HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_7);
+
+			if(decision_array[agv_turn_count - 1] == 'L'){
+
+				PID_Motor_Turn_Left(base_speed, orientation);
+				HAL_Delay(second_timer_buffer);
+				PID_Motor_All_Break();
+
+				HAL_Delay(1000);
+
+				_turn_decide = 'L';
+			}
+			if(decision_array[agv_turn_count - 1] == 'F'){
+
+				PID_Forward_Rotation(base_speed, base_speed, orientation);
+				HAL_Delay(skip_turn_timer_buffer);
+				_turn_decide = 0;
+			}
+
+		}
+
+	}
+	if((sensor_calibrated_values[8] > black_detection_thresh_hold) && (sensor_calibrated_values[9] > black_detection_thresh_hold) &&
+			(sensor_calibrated_values[0] < white_detection_thresh_hold) && (sensor_calibrated_values[1] < white_detection_thresh_hold)){
+			if((*sensor_middle_on_line_number >= 3) && (*sensor_middle_on_line_number < 6)){
+
+				//line_gap_disable = 1;
+
+			PID_Forward_Rotation(base_speed, base_speed, orientation);
+			HAL_Delay(first_timer_buffer);
+			PID_Motor_All_Break();
+
+			HAL_Delay(1000);
+
+			agv_turn_count += 1;
+
+			HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_7);
+
+			if(decision_array[agv_turn_count - 1] == 'R'){
+
+				PID_Motor_Turn_Right(base_speed, orientation);
+				HAL_Delay(second_timer_buffer);
+				PID_Motor_All_Break();
+
+				HAL_Delay(1000);
+
+				_turn_decide = 'R';
+			}
+			if(decision_array[agv_turn_count - 1] == 'F'){
+
+				PID_Forward_Rotation(base_speed, base_speed, orientation);
+				HAL_Delay(skip_turn_timer_buffer);
+				_turn_decide = 0;
+			}
+		}
+
+	}
+
+
+
+
+	if(_turn_decide == 'L'){
+		while((sensor_calibrated_values[5] < white_detection_thresh_hold) || (sensor_calibrated_values[6] < white_detection_thresh_hold)){
+			  Line_Sensor_Calculation(&front_array);
+			  Line_Sensor_Calculation(&back_array);
+
+			PID_Motor_Turn_Left(base_speed, orientation);
+		}
+		PID_Motor_All_Break();
+		_turn_decide = 0;
+
+
+		//line_gap_disable = 0;
+
+//		else if((sensor_calibrated_values[7] > black_detection_thresh_hold) || (sensor_calibrated_values[8] > black_detection_thresh_hold)){
 //
-//			HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_7);
-//
-//			if(decision_array[agv_turn_count - 1] == 'L'){
-//
-//				PID_Motor_Turn_Left(base_speed, orientation);
-//				HAL_Delay(second_timer_buffer);
-//				PID_Motor_All_Break();
-//
-//				HAL_Delay(1000);
-//
-//				_turn_decide = 'L';
-//			}
-//			if(decision_array[agv_turn_count - 1] == 'F'){
-//
-//				PID_Forward_Rotation(base_speed, base_speed, orientation);
-//				HAL_Delay(skip_turn_timer_buffer);
-//				_turn_decide = 0;
-//			}
 //
 //		}
+
+	}
+	if(_turn_decide == 'R'){
+		while((sensor_calibrated_values[6] < white_detection_thresh_hold) || (sensor_calibrated_values[5] < white_detection_thresh_hold)){
+			  Line_Sensor_Calculation(&front_array);
+			  Line_Sensor_Calculation(&back_array);
+
+			PID_Motor_Turn_Right(base_speed, orientation);
+		}
+		PID_Motor_All_Break();
+		_turn_decide = 0;
+
+		//line_gap_disable = 0;
+//		else if((sensor_calibrated_values[4] > black_detection_thresh_hold) || (sensor_calibrated_values[3] > black_detection_thresh_hold)){
 //
-//	}
-//	if((sensor_calibrated_values[8] > black_detection_thresh_hold) && (sensor_calibrated_values[9] > black_detection_thresh_hold) &&
-//			(sensor_calibrated_values[0] < white_detection_thresh_hold) && (sensor_calibrated_values[1] < white_detection_thresh_hold)){
-//			if((*sensor_middle_on_line_number >= 3) && (*sensor_middle_on_line_number < 6)){
-//
-//				//line_gap_disable = 1;
-//
-//			PID_Forward_Rotation(base_speed, base_speed, orientation);
-//			HAL_Delay(first_timer_buffer);
-//			PID_Motor_All_Break();
-//
-//			HAL_Delay(1000);
-//
-//			agv_turn_count += 1;
-//
-//			HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_7);
-//
-//			if(decision_array[agv_turn_count - 1] == 'R'){
-//
-//				PID_Motor_Turn_Right(base_speed, orientation);
-//				HAL_Delay(second_timer_buffer);
-//				PID_Motor_All_Break();
-//
-//				HAL_Delay(1000);
-//
-//				_turn_decide = 'R';
-//			}
-//			if(decision_array[agv_turn_count - 1] == 'F'){
-//
-//				PID_Forward_Rotation(base_speed, base_speed, orientation);
-//				HAL_Delay(skip_turn_timer_buffer);
-//				_turn_decide = 0;
-//			}
 //		}
-//
-//	}
-//
-//
-//
-//
-//	if(_turn_decide == 'L'){
-//		while((sensor_calibrated_values[5] < white_detection_thresh_hold) || (sensor_calibrated_values[6] < white_detection_thresh_hold)){
-//			  Line_Sensor_Calculation(&front_array);
-//			  Line_Sensor_Calculation(&back_array);
-//
-//			PID_Motor_Turn_Left(base_speed, orientation);
-//		}
-//		PID_Motor_All_Break();
-//		_turn_decide = 0;
-//
-//
-//		//line_gap_disable = 0;
-//
-////		else if((sensor_calibrated_values[7] > black_detection_thresh_hold) || (sensor_calibrated_values[8] > black_detection_thresh_hold)){
-////
-////
-////		}
-//
-//	}
-//	if(_turn_decide == 'R'){
-//		while((sensor_calibrated_values[6] < white_detection_thresh_hold) || (sensor_calibrated_values[5] < white_detection_thresh_hold)){
-//			  Line_Sensor_Calculation(&front_array);
-//			  Line_Sensor_Calculation(&back_array);
-//
-//			PID_Motor_Turn_Right(base_speed, orientation);
-//		}
-//		PID_Motor_All_Break();
-//		_turn_decide = 0;
-//
-//		//line_gap_disable = 0;
-////		else if((sensor_calibrated_values[4] > black_detection_thresh_hold) || (sensor_calibrated_values[3] > black_detection_thresh_hold)){
-////
-////		}
-//	}
-//
-//
-//}
+	}
+
+
+}
 
 
 
@@ -1095,15 +1095,15 @@ int main(void)
                 &line_sensor_back_on_line_right_number,
                 &line_sensor_back_threshold);
 
-//  Line_Sensor_Calculation(&front_array);
-//  Line_Sensor_Calculation(&back_array);
+  Line_Sensor_Calculation(&front_array);
+  Line_Sensor_Calculation(&back_array);
 
-//  if((back_array.ir_sen_on_line_total_num >= 9) &&(front_array.ir_sen_on_line_total_num >= 1)){
-//	  agv_orientation = 0xF00F;
-//  }
-//  if((front_array.ir_sen_on_line_total_num >= 9) && (back_array.ir_sen_on_line_total_num >= 1)){
-//	  agv_orientation = 0xF11F;
-//  }
+  if((back_array.ir_sen_on_line_total_num >= 9) &&(front_array.ir_sen_on_line_total_num >= 1)){
+	  agv_orientation = 0xF00F;
+  }
+  if((front_array.ir_sen_on_line_total_num >= 9) && (back_array.ir_sen_on_line_total_num >= 1)){
+	  agv_orientation = 0xF11F;
+  }
 
   /* USER CODE END 2 */
 
@@ -1112,8 +1112,6 @@ int main(void)
 
   while (1)
   {
-
-	  agv_orientation = 0xF00F;
 ////
 //	  if(lora_receive_toggle == 255){
 //		  if(LoRa_transmit(&myLoRa, LoraTxBuffer, 26, 500) == 1){
@@ -1125,6 +1123,16 @@ int main(void)
 //
 //	  Line_Sensor_Calculation(&front_array);
 //	  Line_Sensor_Calculation(&back_array);
+
+//	  AGV_Turn_Detection_Completion(front_array.ir_sen_val_cal,
+//								   &front_array.ir_sen_on_line_mid_num,
+//								   &front_array.ir_sen_on_line_total_num,
+//									on_task_decisions,
+//								   &agv_orientation);
+
+	  //PID_control(&front_array.ir_sen_read_line_val, &agv_orientation);
+
+	  //PID_Forward_Rotation(pid_motor_speed_A, pid_motor_speed_B, &agv_orientation);
 
 //	  motor_enable_velocity_mode(0x01);
 //	  motor_enable_velocity_mode(0x02);
@@ -1157,55 +1165,56 @@ int main(void)
 //	  HAL_Delay(10);
 //	  HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_7);
 //	  agv_orientation = 0xF00F;
-	  PID_Forward_Rotation(255, 10, &agv_orientation);
+
+	  //PID_Forward_Rotation(100, 20, &agv_orientation);
 //	  HAL_Delay(2000);
-//	  PID_Motor_Turn_Left(10, &agv_orientation);
+	  //PID_Motor_Turn_Left(20, &agv_orientation);
 //	  HAL_Delay(2000);
-//	  PID_Motor_Turn_Right(10, &agv_orientation);
+//	  PID_Motor_Turn_Right(20, &agv_orientation);
 //	  HAL_Delay(2000);
 //	  PID_Motor_All_Break();
 //	  HAL_Delay(2000);
 
 
 
-//	  	  if(On_Task == 0xF11F){
-//	 		  if(agv_orientation == 0xF00F){
-//
-//	 			  Line_Sensor_Calculation(&front_array);
-//
-//				  AGV_Turn_Detection_Completion(front_array.ir_sen_val_cal,
-//											   &front_array.ir_sen_on_line_mid_num,
-//											   &front_array.ir_sen_on_line_total_num,
-//												on_task_decisions,
-//											   &agv_orientation);
-//
-//				  PID_control(&front_array.ir_sen_read_line_val, &agv_orientation);
-//
-//				  PID_Forward_Rotation(pid_motor_speed_A, pid_motor_speed_B, &agv_orientation);
-//
-//
-//	  		  }
-//	  		  if(agv_orientation == 0xF11F){
-//
-//	  			  Line_Sensor_Calculation(&back_array);
-//
-//				  AGV_Turn_Detection_Completion(back_array.ir_sen_val_cal,
-//											   &back_array.ir_sen_on_line_mid_num,
-//											   &back_array.ir_sen_on_line_total_num,
-//												on_task_decisions,
-//											   &agv_orientation);
-//
-//				  PID_control(&back_array.ir_sen_read_line_val, &agv_orientation);
-//
-//				  PID_Forward_Rotation(pid_motor_speed_A, pid_motor_speed_B, &agv_orientation);
-//
-//	  		  }
-//
-//	  	  }
-//	  	  if(On_Task == 0xF00F){
-//	  		  AGV_waiting();
-//	  		  PID_Motor_All_Break();
-//	  	  }
+	  	  if(On_Task == 0xF11F){
+	 		  if(agv_orientation == 0xF00F){
+
+	 			  Line_Sensor_Calculation(&front_array);
+
+				  AGV_Turn_Detection_Completion(front_array.ir_sen_val_cal,
+											   &front_array.ir_sen_on_line_mid_num,
+											   &front_array.ir_sen_on_line_total_num,
+												on_task_decisions,
+											   &agv_orientation);
+
+				  PID_control(&front_array.ir_sen_read_line_val, &agv_orientation);
+
+				  PID_Forward_Rotation(pid_motor_speed_A, pid_motor_speed_B, &agv_orientation);
+
+
+	  		  }
+	  		  if(agv_orientation == 0xF11F){
+
+	  			  Line_Sensor_Calculation(&back_array);
+
+				  AGV_Turn_Detection_Completion(back_array.ir_sen_val_cal,
+											   &back_array.ir_sen_on_line_mid_num,
+											   &back_array.ir_sen_on_line_total_num,
+												on_task_decisions,
+											   &agv_orientation);
+
+				  PID_control(&back_array.ir_sen_read_line_val, &agv_orientation);
+
+				  PID_Forward_Rotation(pid_motor_speed_A, pid_motor_speed_B, &agv_orientation);
+
+	  		  }
+
+	  	  }
+	  	  if(On_Task == 0xF00F){
+	  		  AGV_waiting();
+	  		  PID_Motor_All_Break();
+	  	  }
 
 
 
@@ -1665,9 +1674,9 @@ static void MX_TIM2_Init(void)
 
   /* USER CODE END TIM2_Init 1 */
   htim2.Instance = TIM2;
-  htim2.Init.Prescaler = 64;
+  htim2.Init.Prescaler = 1360;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim2.Init.Period = 255;
+  htim2.Init.Period = 100;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
   if (HAL_TIM_PWM_Init(&htim2) != HAL_OK)
@@ -1683,15 +1692,17 @@ static void MX_TIM2_Init(void)
   sConfigOC.OCMode = TIM_OCMODE_PWM1;
   sConfigOC.Pulse = 0;
   sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
-  sConfigOC.OCFastMode = TIM_OCFAST_ENABLE;
+  sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
   if (HAL_TIM_PWM_ConfigChannel(&htim2, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
   {
     Error_Handler();
   }
+  __HAL_TIM_DISABLE_OCxPRELOAD(&htim2, TIM_CHANNEL_1);
   if (HAL_TIM_PWM_ConfigChannel(&htim2, &sConfigOC, TIM_CHANNEL_2) != HAL_OK)
   {
     Error_Handler();
   }
+  __HAL_TIM_DISABLE_OCxPRELOAD(&htim2, TIM_CHANNEL_2);
   /* USER CODE BEGIN TIM2_Init 2 */
 
   /* USER CODE END TIM2_Init 2 */
