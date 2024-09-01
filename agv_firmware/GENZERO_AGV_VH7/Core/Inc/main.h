@@ -71,8 +71,12 @@ void Error_Handler(void);
 #define TRIG_GPIO_Port GPIOE
 #define RS485_M2_TX_EN_Pin GPIO_PIN_15
 #define RS485_M2_TX_EN_GPIO_Port GPIOE
+#define RS485_M2_RX_LED_Pin GPIO_PIN_12
+#define RS485_M2_RX_LED_GPIO_Port GPIOB
 #define RS485_M1_TX_EN_Pin GPIO_PIN_13
 #define RS485_M1_TX_EN_GPIO_Port GPIOB
+#define RS485_M1_RX_LED_Pin GPIO_PIN_8
+#define RS485_M1_RX_LED_GPIO_Port GPIOD
 #define LORA_RX_LED_Pin GPIO_PIN_6
 #define LORA_RX_LED_GPIO_Port GPIOD
 #define LORA_NSS_Pin GPIO_PIN_10

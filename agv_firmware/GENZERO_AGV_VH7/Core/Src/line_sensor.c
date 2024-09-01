@@ -105,16 +105,16 @@ void Line_Sensor_Calculation(ir_array *ir_struct){
     // start read line number section
     if(!on_line){
         if(ir_struct->ir_sen_read_line_old_val < (ir_struct->ir_sen_channel_num - 1) * 1000/2){
-            ir_struct->ir_sen_read_line_old_val = 0;
+            ir_struct->ir_sen_read_line_val = 0;
         }
         else{
-            ir_struct->ir_sen_read_line_old_val = (ir_struct->ir_sen_channel_num - 1)*1000;
+            ir_struct->ir_sen_read_line_val = (ir_struct->ir_sen_channel_num - 1)*1000;
         }
     }
     else{
-        ir_struct->ir_sen_read_line_old_val = avg/sum;
+        ir_struct->ir_sen_read_line_val = avg/sum;
     }
-    ir_struct->ir_sen_read_line_val = ir_struct->ir_sen_read_line_old_val;
+    ir_struct->ir_sen_read_line_old_val = ir_struct->ir_sen_read_line_val;
     // end read line number section
 
     // start on line sensor calculation

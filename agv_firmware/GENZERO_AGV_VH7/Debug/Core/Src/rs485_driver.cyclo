@@ -1,4 +1,6 @@
 ../Core/Src/rs485_driver.c:11:6:rs485_init	1
-../Core/Src/rs485_driver.c:15:6:rs485_send_data	2
-../Core/Src/rs485_driver.c:24:6:rs485_set_speed	3
-../Core/Src/rs485_driver.c:47:6:rs485_enable_velocity_mode	1
+../Core/Src/rs485_driver.c:16:6:rs485_send_data	2
+../Core/Src/rs485_driver.c:28:6:rs485_set_speed	3
+../Core/Src/rs485_driver.c:51:6:rs485_enable_velocity_mode	1
+../Core/Src/rs485_driver.c:81:6:rs485_UART_receive_handler	1
+../Core/Src/rs485_driver.c:89:6:rs485_connection_lost_handler	1
