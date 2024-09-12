@@ -22,7 +22,7 @@ void rs485_send_data(rs485_driver *driver, uint8_t *data){
 	}
 	driver->rs485_last_connectivity = driver->rs485_connectivity;
 	HAL_GPIO_WritePin(driver->rs485_rx_led_port, driver->rs485_rx_led_pin, GPIO_PIN_RESET);
-	//HAL_UARTEx_ReceiveToIdle_IT(driver->rs485_huart, driver->rs485_RxData, 16);
+	HAL_UARTEx_ReceiveToIdle_IT(driver->rs485_huart, driver->rs485_RxData, 16);
 }
 
 void rs485_set_speed(rs485_driver *driver, uint16_t speed, uint8_t dir){
