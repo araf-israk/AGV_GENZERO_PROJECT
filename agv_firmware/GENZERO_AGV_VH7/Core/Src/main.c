@@ -123,11 +123,11 @@ volatile uint8_t line_sensor_back_on_line_left_number, line_sensor_back_on_line_
 volatile uint8_t line_sensor_back_on_line_total_number;
 
 
-uint16_t line_sensor_front_max_sensor_vales[line_sensor_front_total_channel] = {4095, 4095, 4095, 4095, 4095, 4095, 4095, 3435, 4095, 4095};
-uint16_t line_sensor_front_min_sensor_vales[line_sensor_front_total_channel] = {722, 1390, 1352, 1147, 2559, 1206, 958, 943, 1242, 2756};
+uint16_t line_sensor_front_max_sensor_vales[line_sensor_front_total_channel] = {4095, 4095, 4095, 4095, 4095, 4095, 4095, 4095, 4095, 4095};
+uint16_t line_sensor_front_min_sensor_vales[line_sensor_front_total_channel] = {560, 550, 600, 540, 500, 530, 500, 500, 500, 500};
 
-uint16_t line_sensor_back_max_sensor_vales[line_sensor_back_total_channel] = {4095, 4095, 4095, 4095, 4095, 4095, 4095, 4095, 4095, 4095};
-uint16_t line_sensor_back_min_sensor_vales[line_sensor_back_total_channel] = {1083, 1056, 919, 843, 1585, 2045, 1517, 2218, 1390, 1430};
+uint16_t line_sensor_back_max_sensor_vales[line_sensor_back_total_channel] = {4095, 4095, 4095, 4095, 4095, 4095, 2800, 4095, 2800, 4095};
+uint16_t line_sensor_back_min_sensor_vales[line_sensor_back_total_channel] = {750, 800, 700, 700, 700, 700, 500, 700, 550, 600};
 
 
 const uint8_t line_sensor_front_channel_number = sizeof(line_sensor_front_values_dma)/sizeof(line_sensor_front_values_dma[0]);
@@ -138,8 +138,8 @@ volatile uint16_t line_sensor_back_read_line_value;
 
 //uint8_t line_gap_disable = 0;
 
-const uint16_t line_sensor_front_threshold = 500;
-const uint16_t line_sensor_back_threshold = 500;
+const uint16_t line_sensor_front_threshold = 600;
+const uint16_t line_sensor_back_threshold = 600;
 
 ir_array front_array;
 ir_array back_array;
@@ -173,9 +173,9 @@ uint8_t Rx_Data_Uart1[5];
 
 volatile float P, I, D;
 
-float Kp = 0.025;
+float Kp = 0.013;
 float Ki = 0;
-float Kd = 0.25;
+float Kd = 0.32;
 
 volatile float pid_last_error;
 volatile float pid_error;
@@ -183,7 +183,7 @@ volatile float pid_motor_speed_change;
 
 volatile uint16_t pid_motor_speed_A;
 volatile uint16_t pid_motor_speed_B;
-uint16_t pid_motor_base_speed = 50;
+uint16_t pid_motor_base_speed = 60;
 
 
 uint8_t agv_turn_count = 0;
@@ -334,42 +334,42 @@ void PID_control_line_gap(volatile uint16_t *line_position){
 void PID_Forward_Rotation(uint16_t enableA, uint16_t enableB, uint16_t *orientation){
 
 	if(*orientation == 0xF11F){
-		//LEFT
-		HAL_GPIO_WritePin(IN1_GPIO_Port, IN1_Pin, GPIO_PIN_SET);
-		HAL_GPIO_WritePin(IN2_GPIO_Port, IN2_Pin, GPIO_PIN_RESET);
+//		//LEFT
+//		HAL_GPIO_WritePin(IN1_GPIO_Port, IN1_Pin, GPIO_PIN_SET);
+//		HAL_GPIO_WritePin(IN2_GPIO_Port, IN2_Pin, GPIO_PIN_RESET);
+//
+//		//RIGHT
+//		HAL_GPIO_WritePin(IN3_GPIO_Port, IN3_Pin, GPIO_PIN_RESET);
+//		HAL_GPIO_WritePin(IN4_GPIO_Port, IN4_Pin, GPIO_PIN_SET);
+//
+//		//Right
+//		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, enableA);
+//
+//		//Left
+//		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, enableB);
 
-		//RIGHT
-		HAL_GPIO_WritePin(IN3_GPIO_Port, IN3_Pin, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin(IN4_GPIO_Port, IN4_Pin, GPIO_PIN_SET);
-
-		//Right
-		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, enableA);
-
-		//Left
-		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, enableB);
-
-//		set_speed(0x01, enableB, 0);
-//		set_speed(0x02, enableA, 1);
+		rs485_set_speed(&m1_driver, enableB, 0);
+		rs485_set_speed(&m2_driver, enableA, 1);
 	}
 
 	if(*orientation == 0xF00F){
 
-		//LEFT
-		HAL_GPIO_WritePin(IN1_GPIO_Port, IN1_Pin, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin(IN2_GPIO_Port, IN2_Pin, GPIO_PIN_SET);
+//		//LEFT
+//		HAL_GPIO_WritePin(IN1_GPIO_Port, IN1_Pin, GPIO_PIN_RESET);
+//		HAL_GPIO_WritePin(IN2_GPIO_Port, IN2_Pin, GPIO_PIN_SET);
+//
+//		//RIGHT
+//		HAL_GPIO_WritePin(IN3_GPIO_Port, IN3_Pin, GPIO_PIN_SET);
+//		HAL_GPIO_WritePin(IN4_GPIO_Port, IN4_Pin, GPIO_PIN_RESET);
+//
+//		//Right
+//		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, enableA);
+//
+//		//Left
+//		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, enableB);
 
-		//RIGHT
-		HAL_GPIO_WritePin(IN3_GPIO_Port, IN3_Pin, GPIO_PIN_SET);
-		HAL_GPIO_WritePin(IN4_GPIO_Port, IN4_Pin, GPIO_PIN_RESET);
-
-		//Right
-		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, enableA);
-
-		//Left
-		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, enableB);
-
-//		set_speed(0x01, enableB, 1);
-//		set_speed(0x02, enableA, 0);
+		rs485_set_speed(&m1_driver, enableA, 1);
+		rs485_set_speed(&m2_driver, enableB, 0);
 
 	}
 
@@ -379,84 +379,84 @@ void PID_Forward_Rotation(uint16_t enableA, uint16_t enableB, uint16_t *orientat
 
 void PID_Motor_Turn_Left(uint16_t _speed, uint16_t *orientation){
 	if(*orientation == 0xF11F){
-		//LEFT
-		HAL_GPIO_WritePin(IN1_GPIO_Port, IN1_Pin, GPIO_PIN_SET);
-		HAL_GPIO_WritePin(IN2_GPIO_Port, IN2_Pin, GPIO_PIN_RESET);
+//		//LEFT
+//		HAL_GPIO_WritePin(IN1_GPIO_Port, IN1_Pin, GPIO_PIN_SET);
+//		HAL_GPIO_WritePin(IN2_GPIO_Port, IN2_Pin, GPIO_PIN_RESET);
+//
+//		//RIGHT
+//		HAL_GPIO_WritePin(IN3_GPIO_Port, IN3_Pin, GPIO_PIN_SET);
+//		HAL_GPIO_WritePin(IN4_GPIO_Port, IN4_Pin, GPIO_PIN_RESET);
+//
+//		//Right
+//		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, _speed);
+//
+//		//Left
+//		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, _speed);
 
-		//RIGHT
-		HAL_GPIO_WritePin(IN3_GPIO_Port, IN3_Pin, GPIO_PIN_SET);
-		HAL_GPIO_WritePin(IN4_GPIO_Port, IN4_Pin, GPIO_PIN_RESET);
-
-		//Right
-		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, _speed);
-
-		//Left
-		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, _speed);
-
-//		set_speed(0x01, _speed, 0);
-//		set_speed(0x02, _speed, 0);
+		rs485_set_speed(&m1_driver, _speed, 0);
+		rs485_set_speed(&m2_driver, _speed, 0);
 	}
 
 	if(*orientation == 0xF00F){
 
-		//LEFT
-		HAL_GPIO_WritePin(IN1_GPIO_Port, IN1_Pin, GPIO_PIN_SET);
-		HAL_GPIO_WritePin(IN2_GPIO_Port, IN2_Pin, GPIO_PIN_RESET);
+//		//LEFT
+//		HAL_GPIO_WritePin(IN1_GPIO_Port, IN1_Pin, GPIO_PIN_SET);
+//		HAL_GPIO_WritePin(IN2_GPIO_Port, IN2_Pin, GPIO_PIN_RESET);
+//
+//		//RIGHT
+//		HAL_GPIO_WritePin(IN3_GPIO_Port, IN3_Pin, GPIO_PIN_SET);
+//		HAL_GPIO_WritePin(IN4_GPIO_Port, IN4_Pin, GPIO_PIN_RESET);
+//
+//		//Right
+//		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, _speed);
+//
+//		//Left
+//		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, _speed);
 
-		//RIGHT
-		HAL_GPIO_WritePin(IN3_GPIO_Port, IN3_Pin, GPIO_PIN_SET);
-		HAL_GPIO_WritePin(IN4_GPIO_Port, IN4_Pin, GPIO_PIN_RESET);
-
-		//Right
-		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, _speed);
-
-		//Left
-		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, _speed);
-
-//		set_speed(0x01, _speed, 0);
-//		set_speed(0x02, _speed, 0);
+		rs485_set_speed(&m1_driver, _speed, 0);
+		rs485_set_speed(&m2_driver, _speed, 0);
 
 	}
 }
 
 void PID_Motor_Turn_Right(uint16_t _speed, uint16_t *orientation){
 	if(*orientation == 0xF11F){
-		//LEFT
-		HAL_GPIO_WritePin(IN1_GPIO_Port, IN1_Pin, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin(IN2_GPIO_Port, IN2_Pin, GPIO_PIN_SET);
+//		//LEFT
+//		HAL_GPIO_WritePin(IN1_GPIO_Port, IN1_Pin, GPIO_PIN_RESET);
+//		HAL_GPIO_WritePin(IN2_GPIO_Port, IN2_Pin, GPIO_PIN_SET);
+//
+//		//RIGHT
+//		HAL_GPIO_WritePin(IN3_GPIO_Port, IN3_Pin, GPIO_PIN_RESET);
+//		HAL_GPIO_WritePin(IN4_GPIO_Port, IN4_Pin, GPIO_PIN_SET);
+//
+//		//Right
+//		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, _speed);
+//
+//		//Left
+//		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, _speed);
 
-		//RIGHT
-		HAL_GPIO_WritePin(IN3_GPIO_Port, IN3_Pin, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin(IN4_GPIO_Port, IN4_Pin, GPIO_PIN_SET);
-
-		//Right
-		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, _speed);
-
-		//Left
-		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, _speed);
-
-//		set_speed(0x01, _speed, 1);
-//		set_speed(0x02, _speed, 1);
+		rs485_set_speed(&m1_driver, _speed, 1);
+		rs485_set_speed(&m2_driver, _speed, 1);
 	}
 
 	if(*orientation == 0xF00F){
 
-		//LEFT
-		HAL_GPIO_WritePin(IN1_GPIO_Port, IN1_Pin, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin(IN2_GPIO_Port, IN2_Pin, GPIO_PIN_SET);
+//		//LEFT
+//		HAL_GPIO_WritePin(IN1_GPIO_Port, IN1_Pin, GPIO_PIN_RESET);
+//		HAL_GPIO_WritePin(IN2_GPIO_Port, IN2_Pin, GPIO_PIN_SET);
+//
+//		//RIGHT
+//		HAL_GPIO_WritePin(IN3_GPIO_Port, IN3_Pin, GPIO_PIN_RESET);
+//		HAL_GPIO_WritePin(IN4_GPIO_Port, IN4_Pin, GPIO_PIN_SET);
+//
+//		//Right
+//		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, _speed);
+//
+//		//Left
+//		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, _speed);
 
-		//RIGHT
-		HAL_GPIO_WritePin(IN3_GPIO_Port, IN3_Pin, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin(IN4_GPIO_Port, IN4_Pin, GPIO_PIN_SET);
-
-		//Right
-		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, _speed);
-
-		//Left
-		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, _speed);
-
-//		set_speed(0x01, _speed, 1);
-//		set_speed(0x02, _speed, 1);
+		rs485_set_speed(&m1_driver, _speed, 1);
+		rs485_set_speed(&m2_driver, _speed, 1);
 
 	}
 
@@ -464,24 +464,24 @@ void PID_Motor_Turn_Right(uint16_t _speed, uint16_t *orientation){
 
 
 void PID_Motor_All_Break(){
-	//LEFT
-	HAL_GPIO_WritePin(IN1_GPIO_Port, IN1_Pin, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(IN2_GPIO_Port, IN2_Pin, GPIO_PIN_RESET);
-
-	//RIGHT
-	HAL_GPIO_WritePin(IN3_GPIO_Port, IN3_Pin, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(IN4_GPIO_Port, IN4_Pin, GPIO_PIN_RESET);
-
-	//Right
-	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, 0);
-
-	//Left
-	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, 0);
+//	//LEFT
+//	HAL_GPIO_WritePin(IN1_GPIO_Port, IN1_Pin, GPIO_PIN_RESET);
+//	HAL_GPIO_WritePin(IN2_GPIO_Port, IN2_Pin, GPIO_PIN_RESET);
+//
+//	//RIGHT
+//	HAL_GPIO_WritePin(IN3_GPIO_Port, IN3_Pin, GPIO_PIN_RESET);
+//	HAL_GPIO_WritePin(IN4_GPIO_Port, IN4_Pin, GPIO_PIN_RESET);
+//
+//	//Right
+//	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, 0);
+//
+//	//Left
+//	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, 0);
 
 //	motor_enable_velocity_mode(0x01);
 //	motor_enable_velocity_mode(0x02);
-//	set_speed(0x01, 0, 1);
-//	set_speed(0x02, 0, 0);
+	rs485_set_speed(&m1_driver, 0, 1);
+	rs485_set_speed(&m2_driver, 0, 1);
 
 }
 
@@ -1219,8 +1219,8 @@ int main(void)
   rs485_enable_velocity_mode(&m1_driver);
   rs485_enable_velocity_mode(&m2_driver);
 
-  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
-  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2);
+  //HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
+  //HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2);
 
 
 
@@ -1304,6 +1304,7 @@ int main(void)
   while (1)
   {
 	  debug_led();
+	  //agv_orientation = 0xF00F;
 ////
 //	  if(lora_receive_toggle == 255){
 //		  if(LoRa_transmit(&myLoRa, LoraTxBuffer, 26, 500) == 1){
@@ -1313,59 +1314,22 @@ int main(void)
 //		  lora_receive_toggle = 0;
 //	  }
 //
-//	  Line_Sensor_Calculation(&front_array);
-//	  Line_Sensor_Calculation(&back_array);
+	  Line_Sensor_Calculation(&front_array);
+	  Line_Sensor_Calculation(&back_array);
+////
+//	  PID_control(&front_array.ir_sen_read_line_val, &agv_orientation);
+////	  //PID_control(&back_array.ir_sen_read_line_val, &agv_orientation);
+////
+//	  PID_Forward_Rotation(pid_motor_speed_A, pid_motor_speed_B, &agv_orientation);
 
-//	  AGV_Turn_Detection_Completion(front_array.ir_sen_val_cal,
-//								   &front_array.ir_sen_on_line_mid_num,
-//								   &front_array.ir_sen_on_line_total_num,
-//									on_task_decisions,
-//								   &agv_orientation);
-
-	  //PID_control(&front_array.ir_sen_read_line_val, &agv_orientation);
-
-	  //PID_Forward_Rotation(pid_motor_speed_A, pid_motor_speed_B, &agv_orientation);
-
-//	  motor_enable_velocity_mode(0x01);
-//	  motor_enable_velocity_mode(0x02);
-
-//
-	  rs485_set_speed(&m1_driver, 100, 0);
-	  rs485_set_speed(&m2_driver, 10, 1);
-//	  HAL_Delay(1000);
-//
-//	  set_speed(0x01, 50, 0);
-//	  set_speed(0x02, 50, 1);
-//	  HAL_Delay(1000);
-
-//	  rs485_TxData[0] = 0x01;
-//	  rs485_TxData[1] = 0x03;  // Function code
-//	  //address 2032 -> Operating Mode
-//	  rs485_TxData[2] = 0x20;  // High 8 bit register address
-//	  rs485_TxData[3] = 0x24;  // Low  8 bit register address
-//	  //data 0x03 -> Set Velocity Mode
-//	  rs485_TxData[4] = 0x00;  // High 8 bit register data
-//	  rs485_TxData[5] = 0x01;  // Low  8 bit register data
-//	  uint16_t crc = crc16(rs485_TxData, 6);
-//	  rs485_TxData[6] = crc&0xFF;
-//	  rs485_TxData[7] = (crc>>8)&0xFF;
-//	  rs485_send_data(rs485_TxData);
-
-//	  motor_enable_velocity_mode(0x01);
-//	  HAL_Delay(10);
-//	  motor_enable_velocity_mode(0x02);
-//	  HAL_Delay(10);
-//	  HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_7);
-//	  agv_orientation = 0xF00F;
-
-	  //PID_Forward_Rotation(100, 20, &agv_orientation);
+	  //PID_Forward_Rotation(10, 100, &agv_orientation);
 //	  HAL_Delay(2000);
-	  //PID_Motor_Turn_Left(20, &agv_orientation);
+	  //PID_Motor_Turn_Left(100, &agv_orientation);
 //	  HAL_Delay(2000);
-//	  PID_Motor_Turn_Right(20, &agv_orientation);
-//	  HAL_Delay(2000);
-//	  PID_Motor_All_Break();
-//	  HAL_Delay(2000);
+	  //PID_Motor_Turn_Right(20, &agv_orientation);
+	  //HAL_Delay(2000);
+	  //PID_Motor_All_Break();
+	  //HAL_Delay(2000);
 
 
 
@@ -1557,7 +1521,7 @@ static void MX_ADC1_Init(void)
 
   /** Configure Regular Channel
   */
-  sConfig.Channel = ADC_CHANNEL_2;
+  sConfig.Channel = ADC_CHANNEL_11;
   sConfig.Rank = ADC_REGULAR_RANK_1;
   sConfig.SamplingTime = ADC_SAMPLETIME_64CYCLES_5;
   sConfig.SingleDiff = ADC_SINGLE_ENDED;
@@ -1571,7 +1535,7 @@ static void MX_ADC1_Init(void)
 
   /** Configure Regular Channel
   */
-  sConfig.Channel = ADC_CHANNEL_3;
+  sConfig.Channel = ADC_CHANNEL_10;
   sConfig.Rank = ADC_REGULAR_RANK_2;
   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
   {
@@ -1580,7 +1544,7 @@ static void MX_ADC1_Init(void)
 
   /** Configure Regular Channel
   */
-  sConfig.Channel = ADC_CHANNEL_4;
+  sConfig.Channel = ADC_CHANNEL_9;
   sConfig.Rank = ADC_REGULAR_RANK_3;
   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
   {
@@ -1589,7 +1553,7 @@ static void MX_ADC1_Init(void)
 
   /** Configure Regular Channel
   */
-  sConfig.Channel = ADC_CHANNEL_5;
+  sConfig.Channel = ADC_CHANNEL_8;
   sConfig.Rank = ADC_REGULAR_RANK_4;
   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
   {
@@ -1598,7 +1562,7 @@ static void MX_ADC1_Init(void)
 
   /** Configure Regular Channel
   */
-  sConfig.Channel = ADC_CHANNEL_6;
+  sConfig.Channel = ADC_CHANNEL_7;
   sConfig.Rank = ADC_REGULAR_RANK_5;
   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
   {
@@ -1607,7 +1571,7 @@ static void MX_ADC1_Init(void)
 
   /** Configure Regular Channel
   */
-  sConfig.Channel = ADC_CHANNEL_7;
+  sConfig.Channel = ADC_CHANNEL_6;
   sConfig.Rank = ADC_REGULAR_RANK_6;
   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
   {
@@ -1616,7 +1580,7 @@ static void MX_ADC1_Init(void)
 
   /** Configure Regular Channel
   */
-  sConfig.Channel = ADC_CHANNEL_8;
+  sConfig.Channel = ADC_CHANNEL_5;
   sConfig.Rank = ADC_REGULAR_RANK_7;
   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
   {
@@ -1625,7 +1589,7 @@ static void MX_ADC1_Init(void)
 
   /** Configure Regular Channel
   */
-  sConfig.Channel = ADC_CHANNEL_9;
+  sConfig.Channel = ADC_CHANNEL_4;
   sConfig.Rank = ADC_REGULAR_RANK_8;
   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
   {
@@ -1634,7 +1598,7 @@ static void MX_ADC1_Init(void)
 
   /** Configure Regular Channel
   */
-  sConfig.Channel = ADC_CHANNEL_10;
+  sConfig.Channel = ADC_CHANNEL_3;
   sConfig.Rank = ADC_REGULAR_RANK_9;
   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
   {
@@ -1643,7 +1607,7 @@ static void MX_ADC1_Init(void)
 
   /** Configure Regular Channel
   */
-  sConfig.Channel = ADC_CHANNEL_11;
+  sConfig.Channel = ADC_CHANNEL_2;
   sConfig.Rank = ADC_REGULAR_RANK_10;
   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
   {
@@ -1701,7 +1665,7 @@ static void MX_ADC3_Init(void)
 
   /** Configure Regular Channel
   */
-  sConfig.Channel = ADC_CHANNEL_0;
+  sConfig.Channel = ADC_CHANNEL_9;
   sConfig.Rank = ADC_REGULAR_RANK_1;
   sConfig.SamplingTime = ADC3_SAMPLETIME_92CYCLES_5;
   sConfig.SingleDiff = ADC_SINGLE_ENDED;
@@ -1715,7 +1679,7 @@ static void MX_ADC3_Init(void)
 
   /** Configure Regular Channel
   */
-  sConfig.Channel = ADC_CHANNEL_1;
+  sConfig.Channel = ADC_CHANNEL_8;
   sConfig.Rank = ADC_REGULAR_RANK_2;
   if (HAL_ADC_ConfigChannel(&hadc3, &sConfig) != HAL_OK)
   {
@@ -1724,7 +1688,7 @@ static void MX_ADC3_Init(void)
 
   /** Configure Regular Channel
   */
-  sConfig.Channel = ADC_CHANNEL_2;
+  sConfig.Channel = ADC_CHANNEL_7;
   sConfig.Rank = ADC_REGULAR_RANK_3;
   if (HAL_ADC_ConfigChannel(&hadc3, &sConfig) != HAL_OK)
   {
@@ -1733,7 +1697,7 @@ static void MX_ADC3_Init(void)
 
   /** Configure Regular Channel
   */
-  sConfig.Channel = ADC_CHANNEL_3;
+  sConfig.Channel = ADC_CHANNEL_6;
   sConfig.Rank = ADC_REGULAR_RANK_4;
   if (HAL_ADC_ConfigChannel(&hadc3, &sConfig) != HAL_OK)
   {
@@ -1742,7 +1706,7 @@ static void MX_ADC3_Init(void)
 
   /** Configure Regular Channel
   */
-  sConfig.Channel = ADC_CHANNEL_4;
+  sConfig.Channel = ADC_CHANNEL_5;
   sConfig.Rank = ADC_REGULAR_RANK_5;
   if (HAL_ADC_ConfigChannel(&hadc3, &sConfig) != HAL_OK)
   {
@@ -1751,7 +1715,7 @@ static void MX_ADC3_Init(void)
 
   /** Configure Regular Channel
   */
-  sConfig.Channel = ADC_CHANNEL_5;
+  sConfig.Channel = ADC_CHANNEL_4;
   sConfig.Rank = ADC_REGULAR_RANK_6;
   if (HAL_ADC_ConfigChannel(&hadc3, &sConfig) != HAL_OK)
   {
@@ -1760,7 +1724,7 @@ static void MX_ADC3_Init(void)
 
   /** Configure Regular Channel
   */
-  sConfig.Channel = ADC_CHANNEL_6;
+  sConfig.Channel = ADC_CHANNEL_3;
   sConfig.Rank = ADC_REGULAR_RANK_7;
   if (HAL_ADC_ConfigChannel(&hadc3, &sConfig) != HAL_OK)
   {
@@ -1769,7 +1733,7 @@ static void MX_ADC3_Init(void)
 
   /** Configure Regular Channel
   */
-  sConfig.Channel = ADC_CHANNEL_7;
+  sConfig.Channel = ADC_CHANNEL_2;
   sConfig.Rank = ADC_REGULAR_RANK_8;
   if (HAL_ADC_ConfigChannel(&hadc3, &sConfig) != HAL_OK)
   {
@@ -1778,7 +1742,7 @@ static void MX_ADC3_Init(void)
 
   /** Configure Regular Channel
   */
-  sConfig.Channel = ADC_CHANNEL_8;
+  sConfig.Channel = ADC_CHANNEL_1;
   sConfig.Rank = ADC_REGULAR_RANK_9;
   if (HAL_ADC_ConfigChannel(&hadc3, &sConfig) != HAL_OK)
   {
@@ -1787,7 +1751,7 @@ static void MX_ADC3_Init(void)
 
   /** Configure Regular Channel
   */
-  sConfig.Channel = ADC_CHANNEL_9;
+  sConfig.Channel = ADC_CHANNEL_0;
   sConfig.Rank = ADC_REGULAR_RANK_10;
   if (HAL_ADC_ConfigChannel(&hadc3, &sConfig) != HAL_OK)
   {

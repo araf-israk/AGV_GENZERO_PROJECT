@@ -69,7 +69,8 @@ void Line_Sensor_Calculation(ir_array *ir_struct){
         if(x>1000){
             x = 1000;
         }
-        value = (1000-x);
+        //value = (1000-x);
+        value = x;
         ir_struct->ir_sen_val_cal[i] = value;
 
         // start read line number section

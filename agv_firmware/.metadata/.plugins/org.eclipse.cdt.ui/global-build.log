@@ -1222,3 +1222,581 @@ Finished building: default.size.stdout
  
 Finished building: GENZERO_AGV_VH7.list
  
+16:02:29 **** Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:834:6: error: redefinition of 'AGV_Turn_Detection_Completion'
+  834 | void AGV_Turn_Detection_Completion(volatile uint16_t *sensor_calibrated_values,
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:596:6: note: previous definition of 'AGV_Turn_Detection_Completion' with type 'void(volatile uint16_t *, volatile uint8_t *, volatile uint8_t *, uint8_t *, uint16_t *)' {aka 'void(volatile short unsigned int *, volatile unsigned char *, volatile unsigned char *, unsigned char *, short unsigned int *)'}
+  596 | void AGV_Turn_Detection_Completion(volatile uint16_t *sensor_calibrated_values,
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'AGV_Turn_Detection_Completion':
+../Core/Src/main.c:842: warning: "first_timer_buffer" redefined
+  842 | #define first_timer_buffer 600
+      | 
+../Core/Src/main.c:604: note: this is the location of the previous definition
+  604 | #define first_timer_buffer 800
+      | 
+make: *** [Core/Src/subdir.mk:46: Core/Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+16:03:13 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  70796	    128	   3416	  74340	  12264	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+16:04:41 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  70672	    128	   3416	  74216	  121e8	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+16:05:10 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  70720	    128	   3416	  74264	  12218	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+16:06:23 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  70496	    128	   3416	  74040	  12138	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+16:09:24 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+   text	   data	    bss	    dec	    hex	filename
+  70496	    128	   3416	  74040	  12138	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+16:12:13 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+   text	   data	    bss	    dec	    hex	filename
+  70496	    128	   3416	  74040	  12138	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+16:16:52 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  68844	    128	   3416	  72388	  11ac4	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+16:18:03 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  69828	    128	   3416	  73372	  11e9c	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+16:20:49 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  69940	    128	   3416	  73484	  11f0c	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+16:25:50 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  69940	    128	   3416	  73484	  11f0c	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+16:26:55 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  69940	    128	   3416	  73484	  11f0c	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+16:27:13 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  69940	    128	   3416	  73484	  11f0c	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+16:27:51 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  69940	    128	   3416	  73484	  11f0c	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+16:29:51 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  69940	    128	   3416	  73484	  11f0c	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+16:32:48 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  69776	    128	   3416	  73320	  11e68	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+16:34:12 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  67624	    108	   3388	  71120	  115d0	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+16:34:51 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  67624	    108	   3388	  71120	  115d0	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+16:35:27 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  67624	    108	   3388	  71120	  115d0	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+16:36:10 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  67624	    108	   3388	  71120	  115d0	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+16:37:27 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  67624	    108	   3388	  71120	  115d0	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+16:37:56 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  67624	    108	   3388	  71120	  115d0	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+16:38:23 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  67680	    108	   3388	  71176	  11608	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+16:40:03 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  67340	    108	   3388	  70836	  114b4	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+17:17:24 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  68088	    120	   3416	  71624	  117c8	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+17:29:54 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  68088	    120	   3416	  71624	  117c8	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+17:35:39 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  69752	    128	   3416	  73296	  11e50	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+17:46:11 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  69772	    128	   3416	  73316	  11e64	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+17:49:05 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+   text	   data	    bss	    dec	    hex	filename
+  69772	    128	   3416	  73316	  11e64	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+17:51:31 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/line_sensor.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/line_sensor.d" -MT"Core/Src/line_sensor.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/line_sensor.o"
+../Core/Src/line_sensor.c: In function 'Line_Sensor_Calculation':
+../Core/Src/line_sensor.c:73:38: warning: 'value' may be used uninitialized [-Wmaybe-uninitialized]
+   73 |         ir_struct->ir_sen_val_cal[i] = value;
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
+../Core/Src/line_sensor.c:46:14: note: 'value' was declared here
+   46 |     uint16_t value;
+      |              ^~~~~
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  69760	    128	   3416	  73304	  11e58	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+17:52:48 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  68068	    120	   3416	  71604	  117b4	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+17:55:40 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/line_sensor.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/line_sensor.d" -MT"Core/Src/line_sensor.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/line_sensor.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  68080	    120	   3416	  71616	  117c0	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+17:57:00 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  69764	    128	   3416	  73308	  11e5c	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+17:58:28 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+   text	   data	    bss	    dec	    hex	filename
+  69764	    128	   3416	  73308	  11e5c	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+11:14:07 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+   text	   data	    bss	    dec	    hex	filename
+  69764	    128	   3416	  73308	  11e5c	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+18:33:47 **** Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+   text	   data	    bss	    dec	    hex	filename
+  69764	    128	   3416	  73308	  11e5c	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+18:39:44 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  69764	    128	   3416	  73308	  11e5c	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+18:44:33 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  69764	    128	   3416	  73308	  11e5c	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+18:49:21 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  69756	    128	   3416	  73300	  11e54	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+18:58:33 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  69764	    132	   3420	  73316	  11e64	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
+19:04:24 **** Incremental Build of configuration Debug for project GENZERO_AGV_VH7 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "GENZERO_AGV_VH7.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\AGV_GENZERO_PROJECT\agv_firmware\GENZERO_AGV_VH7\STM32H723ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GENZERO_AGV_VH7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+D:/STM32CUBEIDE/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: GENZERO_AGV_VH7.elf has a LOAD segment with RWX permissions
+Finished building target: GENZERO_AGV_VH7.elf
+ 
+arm-none-eabi-size  GENZERO_AGV_VH7.elf 
+arm-none-eabi-objdump -h -S GENZERO_AGV_VH7.elf  > "GENZERO_AGV_VH7.list"
+   text	   data	    bss	    dec	    hex	filename
+  69760	    128	   3416	  73304	  11e58	GENZERO_AGV_VH7.elf
+Finished building: default.size.stdout
+ 
+Finished building: GENZERO_AGV_VH7.list
+ 
